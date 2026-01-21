@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    /* Base */
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "noEmit": true,
+
+    /* Interop / DX */
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+
+    /* Strict (keep) */
+    "strict": true,
+
+    /**
+     * Practical strictness knobs
+     * - 아래 3개는 "엄격은 유지하되 너무 귀찮은 에러를 줄이는" 대표 옵션
+     */
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+
+    /**
+     * This one is a trade-off.
+     * - true: class field 사용시 더 타입 엄격 (가끔 라이브러리/데코레이터와 충돌)
+     * - 실무에서는 false로 두는 경우가 꽤 많음
+     */
+    "useDefineForClassFields": false,
+
+    /**
+     * Recommended for Next + isolatedModules 환경
+     * - 타입 import/값 import 구분이 필요할 때 자동으로 도와줌
+     */
+    "verbatimModuleSyntax": true,
+
+    /* Build perf */
+    "incremental": true,
+
+    /* Path alias */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Next plugin */
+    "plugins": [{ "name": "next" }]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"],
+}

@@ -1,0 +1,86 @@
+/* reset.scss */
+/* Modern minimal reset – Radix & Form safe */
+
+/* 1. Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Improve text rendering */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Form elements (⚠️ 핵심) */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* button reset (Radix Trigger 안전) */
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* textarea resize UX */
+textarea {
+  resize: vertical;
+}
+
+/* 6. Remove list styles */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* 7. Anchor reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 8. Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 9. Focus (접근성 유지) */
+:focus-visible {
+  outline: none;
+}
+
+/* 10. Hidden */
+[hidden] {
+  display: none !important;
+}

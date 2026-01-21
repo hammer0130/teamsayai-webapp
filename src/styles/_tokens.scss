@@ -1,0 +1,104 @@
+:root {
+
+  /* Font Family */
+  --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Font Weights */
+  --thin: 100;
+  --extralight: 200;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semibold: 600;
+  --bold: 700;
+  --extrabold: 800;
+  --black: 900;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+
+  /* ===== Light Mode (Default) ===== */
+  
+  /* Primary Colors */
+  --color-primary: #3182F6;
+  --color-primary-hover: #1B64DA;
+  --color-primary-pressed: #1957B8;
+  --color-primary-light: #E8F3FF;
+  
+  /* Semantic Colors */
+  --color-success: #00C471;
+  --color-success-light: #E8FAF0;
+  --color-error: #F04452;
+  --color-error-light: #FFEBEE;
+  --color-warning: #FF9500;
+  --color-warning-light: #FFF4E5;
+  
+  /* Neutral Colors */
+  --color-background: #FFFFFF;
+  --color-surface: #F4F4F4;
+  --color-border: #E5E8EB;
+  --color-border-light: #F2F4F6;
+  
+  /* Text Colors */
+  --color-text-primary: #191F28;
+  --color-text-secondary: #8B95A1;
+  --color-text-tertiary: #B0B8C1;
+  --color-text-disabled: #D1D6DB;
+  --color-text-inverse: #FFFFFF;
+  
+  /* Component Specific */
+  --color-card-background: #FFFFFF;
+  --color-card-shadow: rgba(0, 0, 0, 0.04);
+  --color-input-background: #FFFFFF;
+  --color-input-border: #E5E8EB;
+  --color-input-focus: #3182F6;
+  --color-toggle-off: #D1D6DB;
+  --color-toggle-on: #3182F6;
+  --color-fab-shadow: rgba(49, 130, 246, 0.3);
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  /* Primary Colors */
+  --color-primary: #4D9FFF;
+  --color-primary-hover: #70B2FF;
+  --color-primary-pressed: #3182F6;
+  --color-primary-light: #1A3A5C;
+  
+  /* Semantic Colors */
+  --color-success: #2AD87E;
+  --color-success-light: #1A3D2E;
+  --color-error: #FF6B6B;
+  --color-error-light: #3D1A1A;
+  --color-warning: #FFB84D;
+  --color-warning-light: #3D2E1A;
+  
+  /* Neutral Colors */
+  --color-background: #0D1117;
+  --color-surface: #161B22;
+  --color-border: #30363D;
+  --color-border-light: #21262D;
+  
+  /* Text Colors */
+  --color-text-primary: #F0F6FC;
+  --color-text-secondary: #8B949E;
+  --color-text-tertiary: #6E7681;
+  --color-text-disabled: #484F58;
+  --color-text-inverse: #0D1117;
+  
+  /* Component Specific */
+  --color-card-background: #161B22;
+  --color-card-shadow: rgba(0, 0, 0, 0.3);
+  --color-input-background: #0D1117;
+  --color-input-border: #30363D;
+  --color-input-focus: #4D9FFF;
+  --color-toggle-off: #484F58;
+  --color-toggle-on: #4D9FFF;
+  --color-fab-shadow: rgba(77, 159, 255, 0.3);
+}
