@@ -61,6 +61,40 @@
   --color-toggle-off: #D1D6DB;
   --color-toggle-on: #3182F6;
   --color-fab-shadow: rgba(49, 130, 246, 0.3);
+
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Component Heights */
+  --height-button: 52px;
+  --height-button-sm: 40px;
+  --height-input: 48px;
+  --height-input-sm: 40px;
+  --height-top-bar: 56px;
+  --height-bottom-tab: 83px;
+  --height-toggle: 31px;
+  
+  /* Component Widths */
+  --width-toggle: 51px;
+  --width-fab: 56px;
+  
+  /* Icon Sizes */
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  
+  /* Avatar Sizes */
+  --avatar-size-sm: 32px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 48px;
+  --avatar-size-xl: 64px;
 }
 
 /* ===== Dark Mode ===== */
