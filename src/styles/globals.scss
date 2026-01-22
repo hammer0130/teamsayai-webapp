@@ -1,5 +1,5 @@
 @use "./reset" as *;
 @use "./font" as *;
-@use "./tokens" as *;
+@use "./tokens/_index.scss" as *;
 @use "./base" as *;
 @use "./components" as *;

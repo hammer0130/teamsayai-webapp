@@ -1,21 +1,26 @@
-'use client';
+"use client";
+import { createContext, useContext } from "react";
 
-import { createContext, useContext } from 'react';
-
-export type InputSize = 'sm' | 'md' | 'lg';
-export type InputIntent = 'default' | 'error' | 'success';
+export type InputFieldSize = "sm" | "md" | "lg";
+export type InputFieldIntent = "default" | "error" | "success";
 
 export type InputFieldContextValue = {
-  size: InputSize;
-  intent: InputIntent;
+  inputId: string;
+  helpId: string;
+  errorId: string;
+
+  size: InputFieldSize;
+  intent: InputFieldIntent;
+  disabled?: boolean;
 };
 
-export const InputFieldContext = createContext<InputFieldContextValue | null>(null);
+const InputFieldContext = createContext<InputFieldContextValue | null>(null);
 
-export function useInputFieldContext(componentName = 'InputField') {
+export function useInputFieldContext(componentName?: string) {
   const ctx = useContext(InputFieldContext);
-  if (!ctx) {
+  if (!ctx)
     throw new Error(`${componentName} must be used within <InputField.Root>.`);
-  }
   return ctx;
 }
+
+export { InputFieldContext };

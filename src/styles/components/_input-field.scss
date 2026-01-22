@@ -1,0 +1,36 @@
+// .ui-inputField {
+  
+// }
+.ui-inputField__container {
+  display: flex;
+  align-items: center;
+  background-color: var(--semantic-bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--padding-control-md-y) var(--padding-control-md-x);
+  border: 1px solid var(--semantic-border-default);
+  font-size: var(--font-control-md-size);
+  line-height: var(--font-control-md-lineHeight);
+  color: var(--semantic-text-primary);
+  &[data-size="sm"] {
+    padding: var(--padding-control-sm-y) var(--padding-control-sm-x);
+    font-size: var(--font-control-sm-size);
+    line-height: var(--font-control-sm-lineHeight);
+  }
+  &[data-size="lg"] {
+    padding: var(--padding-control-lg-y) var(--padding-control-lg-x);
+    font-size: var(--font-control-lg-size);
+    line-height: var(--font-control-lg-lineHeight);
+  }
+}
+.ui-inputField__control {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}

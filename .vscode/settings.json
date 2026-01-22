@@ -7,7 +7,7 @@
 
   // ESLint 자동 수정 (import/order, unused vars 등)
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
 
   // JS / TS 모두 적용
