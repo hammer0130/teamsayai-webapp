@@ -21,6 +21,7 @@ type InputFieldRootProps = {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+  error?: boolean;
 } & InputFieldControlProps; // Root가 input props도 받게 함
 
 type InputFieldContainerProps = React.HTMLAttributes<HTMLDivElement>;
@@ -50,6 +51,7 @@ const Control = React.forwardRef<HTMLInputElement, InputFieldControlProps>(
       className,
       id,
       disabled: disabledProp,
+      type = "text",
       "aria-describedby": ariaDesc,
       ...props
     },
@@ -66,7 +68,7 @@ const Control = React.forwardRef<HTMLInputElement, InputFieldControlProps>(
     return (
       <input
         {...props}
-        type="text"
+        type={type}
         ref={ref}
         id={id ?? inputId}
         disabled={isDisabled}
@@ -79,6 +81,58 @@ const Control = React.forwardRef<HTMLInputElement, InputFieldControlProps>(
 );
 Control.displayName = "InputField.Control";
 
+const Action = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className={clsx("ui-inputField__action", className)}>
+      {children}
+    </div>
+  );
+};
+Action.displayName = "InputField.Action";
+
+const Label = ({
+  children,
+  className,
+  ...props
+}: React.LabelHTMLAttributes<HTMLLabelElement>) => {
+  return (
+    <label {...props} className={clsx("ui-inputField__label", className)}>
+      {children}
+    </label>
+  );
+};
+Label.displayName = "InputField.Label";
+
+const ErrorMessage = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className={clsx("ui-inputField__errorMessage", className)}>
+      {children}
+    </div>
+  );
+};
+ErrorMessage.displayName = "InputField.ErrorMessage";
+
+const Help = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className={clsx("ui-inputField__help", className)}>
+      {children}
+    </div>
+  );
+};
+Help.displayName = "InputField.Help";
+
 const Root = ({
   size = "md",
   intent = "default",
@@ -86,7 +140,7 @@ const Root = ({
   className,
   style,
   children,
-  ...controlProps // ✅ 여기가 이제 진짜 input props
+  ...controlProps // input props
 }: InputFieldRootProps) => {
   const rid = React.useId();
 
@@ -124,7 +178,11 @@ const Root = ({
 
   return (
     <InputFieldContext.Provider value={contextValue}>
-      <div className={clsx("ui-inputField", className)} style={style}>
+      <div
+        className={clsx("ui-inputField", className)}
+        data-intent={intent}
+        style={style}
+      >
         {content}
       </div>
     </InputFieldContext.Provider>
@@ -134,4 +192,8 @@ const Root = ({
 export const InputField = Object.assign(Root, {
   Container,
   Control,
+  Action,
+  Label,
+  ErrorMessage,
+  Help,
 });

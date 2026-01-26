@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/button";
 import { InputField } from "@/components/InputField";
 
 export const GuideClient = () => {
@@ -7,23 +8,31 @@ export const GuideClient = () => {
     <div>
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <div style={{ width: "300px" }}>
-          <InputField>
-            <InputField.Container data-size="sm">
+          <InputField size="sm" intent="error">
+            <InputField.Label>Label</InputField.Label>
+            <InputField.Container>
               <InputField.Control placeholder="입력해주세요" />
             </InputField.Container>
+            <InputField.ErrorMessage>Error Message</InputField.ErrorMessage>
           </InputField>
         </div>
         <div style={{ width: "300px" }}>
           <InputField size="md">
+            <InputField.Label>비밀번호</InputField.Label>
             <InputField.Container>
-              <InputField.Control placeholder="입력해주세요" />
+              <InputField.Control type="password" placeholder="입력해주세요" />
             </InputField.Container>
+            <InputField.Help>비밀번호는 5자리로 입력해주세요.</InputField.Help>
           </InputField>
         </div>
         <div style={{ width: "300px" }}>
           <InputField size="lg">
+            <InputField.Label>Label</InputField.Label>
             <InputField.Container>
               <InputField.Control placeholder="입력해주세요" />
+              <InputField.Action>
+                <Button>버튼</Button>
+              </InputField.Action>
             </InputField.Container>
           </InputField>
         </div>

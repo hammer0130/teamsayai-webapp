@@ -1,0 +1,30 @@
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-button-md);
+  .ui-button__content {
+    padding: var(--padding-button-md-y) var(--padding-button-md-x);
+    font-size: var(--font-button-md-size);
+    line-height: var(--font-button-md-lineHeight);
+    color: var(--semantic-text-inverse);
+  }
+
+  &[data-size="sm"] {
+    .ui-button__content {
+      border-radius: var(--border-radius-button-sm);
+      padding: var(--padding-button-sm-y) var(--padding-button-sm-x);
+      font-size: var(--font-button-sm-size);
+      line-height: var(--font-button-sm-lineHeight);
+    }
+  }
+  &[data-size="lg"] {
+    border-radius: var(--border-radius-button-lg);
+    .ui-button__content {
+      padding: var(--padding-button-lg-y) var(--padding-button-lg-x);
+      font-size: var(--font-button-lg-size);
+      line-height: var(--font-button-lg-lineHeight);
+    }
+  }
+}

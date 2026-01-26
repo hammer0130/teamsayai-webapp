@@ -1,6 +1,11 @@
-// .ui-inputField {
-  
-// }
+.ui-inputField {
+  &[data-intent="error"] {
+    .ui-inputField__container {
+      border: 1px solid var(--semantic-text-error);
+    }
+  }
+}
+
 .ui-inputField__container {
   display: flex;
   align-items: center;
@@ -33,4 +38,24 @@
   font-weight: inherit;
   line-height: inherit;
   color: inherit;
+}
+.ui-inputField__label {
+  padding: 0 8px;
+  font-size: var(--font-control-md-size);
+}
+
+.ui-inputField__errorMessage {
+  padding: 0 8px;
+  font-size: var(--font-control-md-size);
+  color: var(--semantic-text-error);
+}
+
+.ui-inputField__help {
+  padding: 0 8px;
+  font-size: var(--font-control-md-size);
+  color: var(--semantic-text-secondary);
+}
+
+.ui-inputField__action {
+  flex-shrink: 0;
 }
