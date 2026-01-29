@@ -4,12 +4,13 @@ import * as React from "react";
 
 import clsx from "clsx";
 
-import { ButtonContext } from "./Button.context";
-
-type Size = "sm" | "md" | "lg";
-type Color = "default" | "primary" | "secondary" | "tertiary" | "danger";
-type Variant = "solid" | "outline" | "ghost" | "link";
-type Shape = "square" | "rounded";
+import {
+  type Size,
+  type Color,
+  type Variant,
+  type Shape,
+  ButtonContext,
+} from "./Button.context";
 
 type ButtonProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -24,9 +25,9 @@ type ButtonProps = Omit<
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      size = "md",
-      color = "default",
-      variant = "solid",
+      size = "medium",
+      color = "primary",
+      variant = "fill",
       shape = "rounded",
       disabled = false,
       className,
@@ -54,7 +55,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           data-shape={shape}
           {...buttonProps}
         >
+          <span className="ui-button-bg"></span>
           <span className="ui-button__content">{children}</span>
+          <span className="ui-button-press"></span>
         </button>
       </ButtonContext.Provider>
     );

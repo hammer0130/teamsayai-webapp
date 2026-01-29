@@ -31,13 +31,23 @@ export const GuideClient = () => {
             <InputField.Container>
               <InputField.Control placeholder="입력해주세요" />
               <InputField.Action>
-                <Button>버튼</Button>
+                <Button size="small">버튼</Button>
               </InputField.Action>
             </InputField.Container>
           </InputField>
         </div>
         <div style={{ width: "300px" }}>
           <InputField size="lg" placeholder="입력해주세요" />
+        </div>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <Button size="small" variant="weak">
+            버튼
+          </Button>
+          <Button size="medium" color="secondary">
+            버튼
+          </Button>
+          <Button size="large">버튼</Button>
+          <Button size="xlarge">버튼</Button>
         </div>
       </div>
     </div>

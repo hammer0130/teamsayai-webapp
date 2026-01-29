@@ -1,0 +1,65 @@
+:root {
+  /* Text */
+  --semantic-text-primary: var(--color-grey-900);
+  --semantic-text-secondary: var(--color-grey-700);
+  --semantic-text-tertiary: var(--color-grey-500);
+  --semantic-text-disabled: var(--color-grey-400);
+  --semantic-text-error: var(--color-red-500);
+  --semantic-text-inverse: #ffffff;
+
+  /* Border / Divider */
+  --semantic-border-default: var(--color-grey-200);
+  --semantic-border-strong: var(--color-grey-300);
+  --semantic-border-focus: var(--color-blue-500);
+  --semantic-border-error: var(--color-red-500);
+
+  /* Status Success */
+  --status-success: var(--color-green-500);
+  --status-success-weak: var(--color-green-50);
+  --status-success-strong: var(--color-green-600);
+
+  /* Status Warning */
+  --status-warning: var(--color-yellow-500);
+  --status-warning-weak: var(--color-yellow-50);
+  --status-warning-strong: var(--color-yellow-600);
+
+  /* Status Danger */
+  --status-danger: var(--color-red-500);
+  --status-danger-weak: var(--color-red-50);
+  --status-danger-strong: var(--color-red-600);
+
+  /* Status Info */
+  --status-info: var(--color-blue-500);
+  --status-info-weak: var(--color-blue-50);
+  --status-info-strong: var(--color-blue-600);
+
+  /* Brand colors */
+  --primary-color: var(--color-blue-500);
+  --primary-color-weak: var(--color-blue-50);
+  --primary-color-strong: var(--color-blue-600);
+
+  --secondary-color: var(--color-green-500);
+  --secondary-color-weak: var(--color-green-50);
+  --secondary-color-strong: var(--color-green-600);
+
+  --tertiary-color: var(--color-grey-300);
+  --tertiary-color-weak: var(--color-grey-50);
+  --tertiary-color-strong: var(--color-grey-400);
+
+  --quaternary-color: var(--color-grey-100);
+  --quaternary-color-weak: var(--color-grey-50);
+
+  --quinary-color: var(--color-grey-50);
+  --quinary-color-weak: var(--color-grey-10);
+
+  --senary-color: var(--color-grey-10);
+  --senary-color-weak: var(--color-grey-5);
+
+  --septenary-color: var(--color-grey-5);
+  --septenary-color-weak: var(--color-grey-1);
+
+  --octonary-color: var(--color-grey-1);
+  --octonary-color-weak: var(--color-grey-0);
+
+  --nonary-color: var(--color-grey-0);
+}

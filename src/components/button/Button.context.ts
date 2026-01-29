@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext } from "react";
-export type Size = "sm" | "md" | "lg";
-export type Color = "default" | "primary" | "secondary" | "tertiary" | "danger";
-export type Variant = "solid" | "outline" | "ghost" | "link";
+export type Size = "small" | "medium" | "large" | "xlarge";
+export type Color = "primary" | "secondary" | "tertiary" | "danger";
+export type Variant = "fill" | "weak" | "solid" | "outline" | "ghost" | "link";
 export type Shape = "square" | "rounded";
 export type ButtonContextValue = {
   size?: Size;

@@ -1,5 +1,5 @@
-@forward "foundation/colors";
-@forward "foundation/typography";
+@forward "./foundation";
+@forward "./components";
 
 :root {
   /* Font Family */
@@ -24,58 +24,9 @@
   --semantic-bg-muted: var(--color-grey-100);
   --semantic-bg-pressed-overlay: var(--color-grey-opacity-200);
 
-  /* Text */
-  --semantic-text-primary: var(--color-grey-900);
-  --semantic-text-secondary: var(--color-grey-700);
-  --semantic-text-tertiary: var(--color-grey-500);
-  --semantic-text-disabled: var(--color-grey-400);
-  --semantic-text-inverse: #ffffff;
-
-  /* Border / Divider */
-  --semantic-border-default: var(--color-grey-200);
-  --semantic-border-strong: var(--color-grey-300);
-  --semantic-border-focus: var(--color-blue-500);
-  --semantic-border-error: var(--color-red-500);
-
   /* Brand / Status */
   --semantic-primary: var(--color-blue-500);
   --semantic-danger: var(--color-red-500);
-
-  /* Button component tokens */
-  --button-color: var(--semantic-text-inverse);
-  --button-background-color: var(--semantic-primary);
-
-  --button-disabled-opacity-color: var(--color-grey-opacity-300);
-  --button-disabled-text-opacity: 0.4;
-
-  --button-gradient-color: var(--color-grey-opacity-200);
-  --button-loader-color: var(--semantic-text-inverse);
-
-  --button-loading-background-color: #000000;
-  --button-loading-opacity: 0.1;
-
-  --button-pressed-background-color: #000000;
-  --button-pressed-opacity: 0.08;
-
-  /* Border Radius */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
-
-  /* Control Spacing Size */
-  --padding-control-sm-y: 8px;
-  --padding-control-sm-x: 12px;
-
-  /* Control Spacing Size */
-  --padding-control-md-y: 10px;
-  --padding-control-md-x: 14px;
-
-  /* lg */
-  --padding-control-lg-y: 14px;
-  --padding-control-lg-x: 16px;
 
   /* Control Font Size */
   --font-control-sm-size: var(--t-f14-text-fontSize);
@@ -111,43 +62,6 @@
   --avatar-size-md: 40px;
   --avatar-size-lg: 48px;
   --avatar-size-xl: 64px;
-
-  --semantic-text-error: var(--color-red-500);
-
-  /* Button Spacing Size */
-  --padding-button-sm-y: 8px;
-  --padding-button-sm-x: 12px;
-
-  --padding-button-md-y: 10px;
-  --padding-button-md-x: 14px;
-
-  --padding-button-lg-y: 14px;
-  --padding-button-lg-x: 16px;
-
-  /* Button Font Size */
-  --font-button-sm-size: var(--t-f14-text-fontSize);
-  --font-button-sm-lineHeight: var(--t-f14-text-lineHeight);
-
-  --font-button-md-size: var(--t-f15-text-fontSize);
-  --font-button-md-lineHeight: var(--t-f15-text-lineHeight);
-
-  --font-button-lg-size: var(--t-f17-text-fontSize);
-  --font-button-lg-lineHeight: var(--t-f17-text-lineHeight);
-
-  /* Button Border Radius */
-  --border-radius-button-sm: var(--radius-sm);
-  --border-radius-button-md: var(--radius-md);
-  --border-radius-button-lg: var(--radius-lg);
-
-  --primary-color: var(--color-blue-500);
-  --secondary-color: var(--color-grey-500);
-  --tertiary-color: var(--color-grey-300);
-  --quaternary-color: var(--color-grey-100);
-  --quinary-color: var(--color-grey-50);
-  --senary-color: var(--color-grey-10);
-  --septenary-color: var(--color-grey-5);
-  --octonary-color: var(--color-grey-1);
-  --nonary-color: var(--color-grey-0);
 }
 
 :root[data-theme="dark"] {

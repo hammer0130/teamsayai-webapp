@@ -1,0 +1,26 @@
+:root {
+  /* Button Spacing Size */
+  --padding-button-sm-y: 8px;
+  --padding-button-sm-x: 12px;
+
+  --padding-button-md-y: 10px;
+  --padding-button-md-x: 14px;
+
+  --padding-button-lg-y: 14px;
+  --padding-button-lg-x: 16px;
+
+  /* Button Font Size */
+  --font-button-sm-size: var(--t-f14-text-fontSize);
+  --font-button-sm-lineHeight: var(--t-f14-text-lineHeight);
+
+  --font-button-md-size: var(--t-f15-text-fontSize);
+  --font-button-md-lineHeight: var(--t-f15-text-lineHeight);
+
+  --font-button-lg-size: var(--t-f17-text-fontSize);
+  --font-button-lg-lineHeight: var(--t-f17-text-lineHeight);
+
+  /* Button Border Radius */
+  --border-radius-button-sm: var(--radius-sm);
+  --border-radius-button-md: var(--radius-md);
+  --border-radius-button-lg: var(--radius-lg);
+}
