@@ -1,0 +1,49 @@
+:root {
+  // ============ List ============
+  --ui-tabs-list-background: transparent;
+  --ui-tabs-list-gap: 0;
+  --ui-tabs-list-border-color: var(--semantic-border-default);
+
+  // ============ Trigger ============
+  --ui-tabs-trigger-background: transparent;
+  --ui-tabs-trigger-background-hover: var(--gray-100);
+  --ui-tabs-trigger-background-active: transparent;
+  --ui-tabs-trigger-text: var(--semantic-text-secondary);
+  --ui-tabs-trigger-text-active: var(--semantic-text-primary);
+  --ui-tabs-trigger-text-disabled: var(--semantic-text-disabled);
+  --ui-tabs-trigger-border-color: transparent;
+  --ui-tabs-trigger-border-active: var(--primary-color);
+  --ui-tabs-trigger-font-weight: 500;
+
+  // ============ Trigger Sizes ============
+  --ui-tabs-trigger-padding-sm: 6px 12px;
+  --ui-tabs-trigger-padding-md: 8px 16px;
+  --ui-tabs-trigger-padding-lg: 10px 20px;
+  --ui-tabs-trigger-padding-xl: 12px 24px;
+
+  --ui-tabs-trigger-font-size-sm: 13px;
+  --ui-tabs-trigger-font-size-md: 14px;
+  --ui-tabs-trigger-font-size-lg: 16px;
+  --ui-tabs-trigger-font-size-xl: 18px;
+
+  --ui-tabs-trigger-height-sm: 32px;
+  --ui-tabs-trigger-height-md: 40px;
+  --ui-tabs-trigger-height-lg: 48px;
+  --ui-tabs-trigger-height-xl: 56px;
+
+  // ============ Content ============
+  --ui-tabs-content-padding: 16px 0;
+  --ui-tabs-content-text: var(--semantic-text-primary);
+
+  // ============ Variant: Enclosed ============
+  --ui-tabs-enclosed-list-background: var(--gray-100);
+  --ui-tabs-enclosed-list-padding: 4px;
+  --ui-tabs-enclosed-list-border-radius: 8px;
+  --ui-tabs-enclosed-trigger-border-radius: 6px;
+  --ui-tabs-enclosed-trigger-background-active: var(--background-default);
+
+  // ============ Variant: Soft ============
+  --ui-tabs-soft-trigger-background-active: var(--primary-color-weak);
+  --ui-tabs-soft-trigger-text-active: var(--primary-color);
+  --ui-tabs-soft-trigger-border-radius: 6px;
+}

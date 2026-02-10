@@ -1,0 +1,32 @@
+:root {
+  // Size
+  --ui-radio-size: 20px;
+  --ui-radio-indicator-size: 10px;
+
+  // Colors
+  --ui-radio-color: var(--ui-color-primary);
+  --ui-radio-background: var(--background-default);
+
+  // Border
+  --ui-radio-border-width: var(--border-width-sm);
+  --ui-radio-border-color: var(--semantic-border-default);
+  --ui-radio-border-focus: var(--semantic-border-focus);
+  --ui-radio-border-error: var(--semantic-border-error);
+
+  // Disabled
+  --ui-radio-disabled-background: var(--disabled-color-weak);
+  --ui-radio-disabled-border: var(--disabled-color);
+
+  // Sizes
+  --ui-radio-size-small: 16px;
+  --ui-radio-indicator-size-small: 8px;
+
+  --ui-radio-size-medium: 20px;
+  --ui-radio-indicator-size-medium: 10px;
+
+  --ui-radio-size-large: 24px;
+  --ui-radio-indicator-size-large: 12px;
+
+  --ui-radio-size-xlarge: 28px;
+  --ui-radio-indicator-size-xlarge: 14px;
+}

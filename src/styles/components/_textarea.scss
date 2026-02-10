@@ -1,0 +1,204 @@
+// ============ Block: .ui-textarea ============
+
+.ui-textarea {
+  width: auto;
+  min-height: var(--textarea-min-height-md);
+  padding: var(--textarea-padding-md);
+  border: 1px solid var(--textarea-border);
+  border-radius: var(--textarea-border-radius-md);
+  background-color: var(--textarea-background);
+  color: var(--textarea-text);
+  font-size: var(--textarea-font-size-md);
+  font-family: inherit;
+  line-height: var(--textarea-line-height);
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: var(--textarea-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--textarea-border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  // Modifier: invalid
+  &[data-invalid] {
+    border-color: var(--textarea-border-error);
+
+    &:focus {
+      border-color: var(--textarea-border-error);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Modifier: disabled (via data-state)
+  &[data-disabled] {
+    background-color: var(--textarea-disabled-background);
+    border-color: var(--textarea-disabled-border);
+    color: var(--textarea-disabled-text);
+    cursor: not-allowed;
+    resize: none;
+
+    &::placeholder {
+      color: var(--textarea-disabled-text);
+    }
+  }
+
+  // Modifier: block
+  &.ui-textarea--block {
+    width: 100%;
+  }
+
+  // Modifier: size
+  &.ui-textarea--small {
+    min-height: var(--textarea-min-height-sm);
+    padding: var(--textarea-padding-sm);
+    border-radius: var(--textarea-border-radius-sm);
+    font-size: var(--textarea-font-size-sm);
+  }
+
+  &.ui-textarea--medium {
+    min-height: var(--textarea-min-height-md);
+    padding: var(--textarea-padding-md);
+    border-radius: var(--textarea-border-radius-md);
+    font-size: var(--textarea-font-size-md);
+  }
+
+  &.ui-textarea--large {
+    min-height: var(--textarea-min-height-lg);
+    padding: var(--textarea-padding-lg);
+    border-radius: var(--textarea-border-radius-lg);
+    font-size: var(--textarea-font-size-lg);
+  }
+
+  &.ui-textarea--xlarge {
+    min-height: var(--textarea-min-height-xl);
+    padding: var(--textarea-padding-xl);
+    border-radius: var(--textarea-border-radius-xl);
+    font-size: var(--textarea-font-size-xl);
+  }
+}
+
+// ============ Element: .ui-textarea__group (Compound 모드) ============
+
+.ui-textarea__group {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: var(--textarea-min-height-md);
+  padding: var(--textarea-padding-md);
+  border: 1px solid var(--textarea-border);
+  border-radius: var(--textarea-border-radius-md);
+  background-color: var(--textarea-background);
+  font-size: var(--textarea-font-size-md);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--textarea-border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  // Modifier: invalid
+  &[data-invalid] {
+    border-color: var(--textarea-border-error);
+
+    &:focus-within {
+      border-color: var(--textarea-border-error);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Modifier: disabled
+  &[data-disabled] {
+    background-color: var(--textarea-disabled-background);
+    border-color: var(--textarea-disabled-border);
+    cursor: not-allowed;
+  }
+
+  // Modifier: block
+  &.ui-textarea__group--block {
+    width: 100%;
+  }
+
+  // Modifier: size
+  &.ui-textarea__group--small {
+    min-height: var(--textarea-min-height-sm);
+    padding: var(--textarea-padding-sm);
+    border-radius: var(--textarea-border-radius-sm);
+    font-size: var(--textarea-font-size-sm);
+  }
+
+  &.ui-textarea__group--medium {
+    min-height: var(--textarea-min-height-md);
+    padding: var(--textarea-padding-md);
+    border-radius: var(--textarea-border-radius-md);
+    font-size: var(--textarea-font-size-md);
+  }
+
+  &.ui-textarea__group--large {
+    min-height: var(--textarea-min-height-lg);
+    padding: var(--textarea-padding-lg);
+    border-radius: var(--textarea-border-radius-lg);
+    font-size: var(--textarea-font-size-lg);
+  }
+
+  &.ui-textarea__group--xlarge {
+    min-height: var(--textarea-min-height-xl);
+    padding: var(--textarea-padding-xl);
+    border-radius: var(--textarea-border-radius-xl);
+    font-size: var(--textarea-font-size-xl);
+  }
+}
+
+// ============ Element: .ui-textarea__control (Compound 내부 textarea) ============
+
+.ui-textarea__control {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: var(--textarea-line-height);
+  color: var(--textarea-text);
+  min-width: 0;
+  resize: none;
+
+  &::placeholder {
+    color: var(--textarea-placeholder);
+  }
+
+  &:disabled {
+    color: var(--textarea-disabled-text);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--textarea-disabled-text);
+    }
+  }
+}
+
+// ============ Element: .ui-textarea__prefix, .ui-textarea__suffix ============
+
+.ui-textarea__prefix,
+.ui-textarea__suffix {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+  color: var(--semantic-text-secondary);
+  flex-shrink: 0;
+}
+
+.ui-textarea__group[data-disabled] {
+  .ui-textarea__prefix,
+  .ui-textarea__suffix {
+    color: var(--textarea-disabled-text);
+  }
+}

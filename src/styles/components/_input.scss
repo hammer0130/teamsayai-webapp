@@ -1,0 +1,196 @@
+// ============ Block: .ui-input ============
+
+.ui-input {
+  width: auto;
+  min-height: var(--input-min-height-md);
+  padding: var(--input-padding-md);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius-md);
+  background-color: var(--input-background);
+  color: var(--input-text);
+  font-size: var(--input-font-size-md);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--input-border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  // Modifier: invalid
+  &[data-invalid] {
+    border-color: var(--input-border-error);
+
+    &:focus {
+      border-color: var(--input-border-error);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Modifier: disabled (via data-state)
+  &[data-disabled] {
+    background-color: var(--input-disabled-background);
+    border-color: var(--input-disabled-border);
+    color: var(--input-disabled-text);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--input-disabled-text);
+    }
+  }
+
+  // Modifier: block
+  &.ui-input--block {
+    width: 100%;
+  }
+
+  // Modifier: size
+  &.ui-input--small {
+    min-height: var(--input-min-height-sm);
+    padding: var(--input-padding-sm);
+    border-radius: var(--input-border-radius-sm);
+    font-size: var(--input-font-size-sm);
+  }
+
+  &.ui-input--medium {
+    min-height: var(--input-min-height-md);
+    padding: var(--input-padding-md);
+    border-radius: var(--input-border-radius-md);
+    font-size: var(--input-font-size-md);
+  }
+
+  &.ui-input--large {
+    min-height: var(--input-min-height-lg);
+    padding: var(--input-padding-lg);
+    border-radius: var(--input-border-radius-lg);
+    font-size: var(--input-font-size-lg);
+  }
+
+  &.ui-input--xlarge {
+    min-height: var(--input-min-height-xl);
+    padding: var(--input-padding-xl);
+    border-radius: var(--input-border-radius-xl);
+    font-size: var(--input-font-size-xl);
+  }
+}
+
+// ============ Element: .ui-input__group (Compound 모드) ============
+
+.ui-input__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--input-min-height-md);
+  padding: var(--input-padding-md);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius-md);
+  background-color: var(--input-background);
+  font-size: var(--input-font-size-md);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--input-border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  // Modifier: invalid
+  &[data-invalid] {
+    border-color: var(--input-border-error);
+
+    &:focus-within {
+      border-color: var(--input-border-error);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  // Modifier: disabled
+  &[data-disabled] {
+    background-color: var(--input-disabled-background);
+    border-color: var(--input-disabled-border);
+    cursor: not-allowed;
+  }
+
+  // Modifier: block
+  &.ui-input__group--block {
+    width: 100%;
+  }
+
+  // Modifier: size
+  &.ui-input__group--small {
+    min-height: var(--input-min-height-sm);
+    padding: var(--input-padding-sm);
+    border-radius: var(--input-border-radius-sm);
+    font-size: var(--input-font-size-sm);
+  }
+
+  &.ui-input__group--medium {
+    min-height: var(--input-min-height-md);
+    padding: var(--input-padding-md);
+    border-radius: var(--input-border-radius-md);
+    font-size: var(--input-font-size-md);
+  }
+
+  &.ui-input__group--large {
+    min-height: var(--input-min-height-lg);
+    padding: var(--input-padding-lg);
+    border-radius: var(--input-border-radius-lg);
+    font-size: var(--input-font-size-lg);
+  }
+
+  &.ui-input__group--xlarge {
+    min-height: var(--input-min-height-xl);
+    padding: var(--input-padding-xl);
+    border-radius: var(--input-border-radius-xl);
+    font-size: var(--input-font-size-xl);
+  }
+}
+
+// ============ Element: .ui-input__control (Compound 내부 input) ============
+
+.ui-input__control {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: inherit;
+  color: var(--input-text);
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+
+  &:disabled {
+    color: var(--input-disabled-text);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--input-disabled-text);
+    }
+  }
+}
+
+// ============ Element: .ui-input__prefix, .ui-input__suffix ============
+
+.ui-input__prefix,
+.ui-input__suffix {
+  display: flex;
+  align-items: center;
+  color: var(--semantic-text-secondary);
+  flex-shrink: 0;
+}
+
+.ui-input__group[data-disabled] {
+  .ui-input__prefix,
+  .ui-input__suffix {
+    color: var(--input-disabled-text);
+  }
+}

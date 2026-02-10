@@ -1,3 +1,6 @@
+@forward './reset';
+@forward './font';
+
 body {
   color: var(--semantic-text-primary);
   background-color: var(--color-background);

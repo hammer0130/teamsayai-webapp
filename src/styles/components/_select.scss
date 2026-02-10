@@ -1,0 +1,226 @@
+// ============ Select Trigger ============
+.ui-select__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: var(--ui-select-trigger-min-height);
+  padding: var(--ui-select-trigger-padding);
+  border: 1px solid var(--ui-select-trigger-border);
+  border-radius: var(--ui-select-trigger-border-radius);
+  background-color: var(--ui-select-trigger-background);
+  color: var(--ui-select-trigger-text);
+  font-size: var(--ui-select-trigger-font-size);
+
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--ui-select-trigger-border-focus);
+  }
+
+  &:focus,
+  &[data-state="open"] {
+    border-color: var(--ui-select-trigger-border-focus);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+  }
+
+  // Placeholder
+  &[data-placeholder] {
+    color: var(--ui-select-trigger-placeholder);
+  }
+
+  // Invalid
+  &[data-invalid] {
+    border-color: var(--ui-select-trigger-border-invalid);
+
+    &:focus,
+    &[data-state="open"] {
+      box-shadow: 0 0 0 2px rgba(var(--danger-color-rgb), 0.2);
+    }
+  }
+
+  // Disabled
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--ui-select-trigger-disabled-background);
+    border-color: var(--ui-select-trigger-disabled-border);
+    color: var(--ui-select-trigger-disabled-text);
+  }
+}
+
+// ============ Select Value ============
+.ui-select__value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ============ Select Icon ============
+.ui-select__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-select-icon-color);
+  flex-shrink: 0;
+
+  svg {
+    width: var(--ui-select-icon-size);
+    height: var(--ui-select-icon-size);
+    transition: transform 0.2s ease;
+  }
+
+  [data-state="open"] > & svg {
+    transform: rotate(180deg);
+  }
+}
+
+// ============ Select Content ============
+.ui-select__content {
+  overflow: hidden;
+  min-width: var(--radix-select-trigger-width);
+  background-color: var(--ui-select-content-background);
+  border: 1px solid var(--ui-select-content-border);
+  border-radius: var(--ui-select-content-border-radius);
+  box-shadow: var(--ui-select-content-shadow);
+
+  // Animation
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+
+  &[data-state="open"] {
+    animation-name: select-content-show;
+  }
+
+  &[data-state="closed"] {
+    animation-name: select-content-hide;
+  }
+
+  // Popper position
+  &[data-side="bottom"] {
+    transform-origin: top;
+  }
+
+  &[data-side="top"] {
+    transform-origin: bottom;
+  }
+}
+
+@keyframes select-content-show {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes select-content-hide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+// ============ Select Viewport ============
+.ui-select__viewport {
+  padding: var(--ui-select-viewport-padding);
+  max-height: var(--ui-select-content-max-height);
+}
+
+// ============ Select Item ============
+.ui-select__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--ui-select-item-padding);
+  border-radius: var(--ui-select-item-border-radius);
+  background-color: var(--ui-select-item-background);
+  color: var(--ui-select-item-text);
+  font-size: var(--ui-select-item-font-size);
+
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.1s ease;
+
+  &[data-highlighted] {
+    background-color: var(--ui-select-item-background-hover);
+  }
+
+  &[data-state="checked"] {
+    background-color: var(--ui-select-item-background-active);
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    color: var(--ui-select-item-text-disabled);
+    pointer-events: none;
+  }
+}
+
+// ============ Select Item Text ============
+.ui-select__item-text {
+  flex: 1;
+}
+
+// ============ Select Item Indicator ============
+.ui-select__item-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-select-item-indicator-color);
+
+  svg {
+    width: var(--ui-select-item-indicator-size);
+    height: var(--ui-select-item-indicator-size);
+  }
+}
+
+// ============ Select Group ============
+.ui-select__group {
+  // Group styles if needed
+}
+
+// ============ Select Label ============
+.ui-select__label {
+  padding: var(--ui-select-label-padding);
+  color: var(--ui-select-label-color);
+  font-size: var(--ui-select-label-font-size);
+  font-weight: 500;
+}
+
+// ============ Select Separator ============
+.ui-select__separator {
+  height: 1px;
+  margin: var(--ui-select-separator-margin);
+  background-color: var(--ui-select-separator-color);
+}
+
+// ============ Select Scroll Button ============
+.ui-select__scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ui-select-scroll-button-height);
+  background-color: var(--ui-select-scroll-button-background);
+  color: var(--ui-select-scroll-button-color);
+  cursor: default;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

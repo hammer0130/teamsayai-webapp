@@ -1,0 +1,27 @@
+:root {
+  // Size
+  --ui-switch-width: 40px;
+  --ui-switch-height: 22px;
+  --ui-switch-thumb-size: 18px;
+
+  // Colors
+  --ui-switch-background: var(--semantic-border-default);
+  --ui-switch-background-checked: var(--primary-color);
+  --ui-switch-thumb-background: var(--background-default);
+
+  // Border
+  --ui-switch-border-radius: 999px;
+  --ui-switch-thumb-border-radius: 50%;
+
+  // Focus
+  --ui-switch-focus-ring: var(--primary-color);
+
+  // Invalid
+  --ui-switch-background-invalid: var(--danger-color);
+  --ui-switch-border-invalid: var(--semantic-border-error);
+
+  // Disabled
+  --ui-switch-disabled-background: var(--disabled-color-weak);
+  --ui-switch-disabled-thumb: var(--disabled-color);
+  --ui-switch-disabled-opacity: 0.5;
+}

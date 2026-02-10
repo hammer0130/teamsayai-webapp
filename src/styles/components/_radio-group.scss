@@ -1,0 +1,85 @@
+// ============ RadioGroup Root ============
+.ui-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &[data-orientation="horizontal"] {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  // Disabled state
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Invalid state - label 색상 변경
+  &[data-invalid] {
+    .ui-radio-group__item + span,
+    label > span {
+      color: var(--danger-color);
+    }
+  }
+}
+
+// ============ RadioGroup Item ============
+.ui-radio-group__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--ui-radio-border-color);
+  border-radius: 50%;
+  background: var(--ui-radio-background);
+
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  // Checked state
+  &[data-state="checked"] {
+    border-color: var(--primary-color);
+  }
+
+  // Invalid state
+  &[data-invalid] {
+    border-color: var(--danger-color);
+
+    &:focus-visible {
+      outline-color: var(--danger-color);
+    }
+  }
+
+  // Disabled state
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: var(--ui-radio-disabled-background);
+    border-color: var(--ui-radio-disabled-border);
+  }
+}
+
+// ============ RadioGroup Indicator ============
+.ui-radio-group__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}

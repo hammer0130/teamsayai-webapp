@@ -1,0 +1,313 @@
+// ============ Root: .ui-toast ============
+
+.ui-toast {
+  // Provider 래퍼; 레이아웃은 Viewport가 담당
+}
+
+// ============ Viewport: .ui-toast__viewport ============
+
+.ui-toast__viewport {
+  position: fixed;
+  z-index: var(--ui-toast-viewport-z-index);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-toast-viewport-gap);
+  width: 100%;
+  max-width: var(--ui-toast-viewport-max-width);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+
+  // position modifier (기본: top-right)
+  &--top-left {
+    top: var(--ui-toast-viewport-padding);
+    left: var(--ui-toast-viewport-padding);
+  }
+
+  &--top-center {
+    top: var(--ui-toast-viewport-padding);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--top-right {
+    top: var(--ui-toast-viewport-padding);
+    right: var(--ui-toast-viewport-padding);
+  }
+
+  &--bottom-left {
+    bottom: var(--ui-toast-viewport-padding);
+    left: var(--ui-toast-viewport-padding);
+  }
+
+  &--bottom-center {
+    bottom: var(--ui-toast-viewport-padding);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &--bottom-right {
+    bottom: var(--ui-toast-viewport-padding);
+    right: var(--ui-toast-viewport-padding);
+  }
+}
+
+// ============ Root (개별 토스트): .ui-toast__root ============
+
+.ui-toast__root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ui-toast-root-padding);
+  background-color: var(--ui-toast-root-background);
+  border: 1px solid var(--ui-toast-root-border);
+  border-radius: var(--ui-toast-root-border-radius);
+  box-shadow: var(--ui-toast-root-shadow);
+  outline: none;
+
+  &[data-state="open"] {
+    animation: ui-toast-in-right 0.2s ease-out;
+  }
+
+  &[data-state="closed"] {
+    animation: ui-toast-out-right 0.15s ease-in forwards;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// 오른쪽 (top-right, bottom-right): 오른쪽에서 진입
+@keyframes ui-toast-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ui-toast-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(var(--radix-toast-swipe-end-x, 0));
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+// 왼쪽 (top-left, bottom-left): 왼쪽에서 진입
+@keyframes ui-toast-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ui-toast-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(var(--radix-toast-swipe-end-x, 0));
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+// 상단 중앙: 위에서 진입
+@keyframes ui-toast-in-top-center {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui-toast-out-top-center {
+  from {
+    opacity: 1;
+    transform: translateY(var(--radix-toast-swipe-end-y, 0));
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+// 하단 중앙: 아래에서 진입
+@keyframes ui-toast-in-bottom-center {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui-toast-out-bottom-center {
+  from {
+    opacity: 1;
+    transform: translateY(var(--radix-toast-swipe-end-y, 0));
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+// 뷰포트 위치별 애니메이션
+.ui-toast__viewport--top-left .ui-toast__root {
+  &[data-state="open"] {
+    animation-name: ui-toast-in-left;
+  }
+  &[data-state="closed"] {
+    animation-name: ui-toast-out-left;
+  }
+}
+
+.ui-toast__viewport--top-center .ui-toast__root {
+  &[data-state="open"] {
+    animation-name: ui-toast-in-top-center;
+  }
+  &[data-state="closed"] {
+    animation-name: ui-toast-out-top-center;
+  }
+}
+
+.ui-toast__viewport--bottom-left .ui-toast__root {
+  &[data-state="open"] {
+    animation-name: ui-toast-in-left;
+  }
+  &[data-state="closed"] {
+    animation-name: ui-toast-out-left;
+  }
+}
+
+.ui-toast__viewport--bottom-center .ui-toast__root {
+  &[data-state="open"] {
+    animation-name: ui-toast-in-bottom-center;
+  }
+  &[data-state="closed"] {
+    animation-name: ui-toast-out-bottom-center;
+  }
+}
+
+// 스와이프 중 위치 (Radix CSS 변수) — left/right 뷰포트만 X 사용
+.ui-toast__viewport--top-right .ui-toast__root[data-swipe="move"],
+.ui-toast__viewport--top-left .ui-toast__root[data-swipe="move"],
+.ui-toast__viewport--bottom-right .ui-toast__root[data-swipe="move"],
+.ui-toast__viewport--bottom-left .ui-toast__root[data-swipe="move"] {
+  transform: translateX(var(--radix-toast-swipe-move-x, 0));
+}
+
+.ui-toast__viewport--top-center .ui-toast__root[data-swipe="move"],
+.ui-toast__viewport--bottom-center .ui-toast__root[data-swipe="move"] {
+  transform: translateY(var(--radix-toast-swipe-move-y, 0));
+}
+
+.ui-toast__root[data-swipe="cancel"] {
+  transform: translateX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.ui-toast__viewport--top-center .ui-toast__root[data-swipe="cancel"],
+.ui-toast__viewport--bottom-center .ui-toast__root[data-swipe="cancel"] {
+  transform: translateY(0);
+}
+
+// ============ Title: .ui-toast__title ============
+
+.ui-toast__title {
+  margin: 0 0 var(--ui-toast-title-margin-bottom);
+  font-size: var(--ui-toast-title-font-size);
+  font-weight: var(--ui-toast-title-font-weight);
+  color: var(--ui-toast-title-color);
+  line-height: 1.3;
+}
+
+// ============ Description: .ui-toast__description ============
+
+.ui-toast__description {
+  margin: 0;
+  font-size: var(--ui-toast-description-font-size);
+  color: var(--ui-toast-description-color);
+  line-height: var(--ui-toast-description-line-height);
+}
+
+// ============ Action: .ui-toast__action ============
+// :not(.ui-button) — asChild로 Button 사용 시 Button 스타일 적용
+
+.ui-toast__action {
+  align-self: flex-start;
+  margin-top: var(--ui-toast-action-margin-top);
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:not(.ui-button) {
+    padding: 4px 0;
+    font-size: var(--ui-toast-action-font-size);
+    font-weight: var(--ui-toast-action-font-weight);
+    color: var(--ui-toast-action-text);
+    background-color: var(--ui-toast-action-background);
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--ui-toast-action-background-hover);
+    }
+  }
+}
+
+// ============ Close: .ui-toast__close ============
+
+.ui-toast__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:not(.ui-button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    font-size: var(--ui-toast-close-font-size);
+    font-weight: var(--ui-toast-close-font-weight);
+    color: var(--ui-toast-close-text);
+    background-color: var(--ui-toast-close-background);
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--ui-toast-close-background-hover);
+    }
+  }
+}

@@ -46,20 +46,41 @@
   --tertiary-color-weak: var(--color-grey-50);
   --tertiary-color-strong: var(--color-grey-400);
 
-  --quaternary-color: var(--color-grey-100);
-  --quaternary-color-weak: var(--color-grey-50);
+  --success-color: var(--color-green-500);
+  --success-color-weak: var(--color-green-50);
+  --success-color-strong: var(--color-green-600);
 
-  --quinary-color: var(--color-grey-50);
-  --quinary-color-weak: var(--color-grey-10);
+  --info-color: var(--color-blue-500);
+  --info-color-weak: var(--color-blue-50);
+  --info-color-strong: var(--color-blue-600);
 
-  --senary-color: var(--color-grey-10);
-  --senary-color-weak: var(--color-grey-5);
+  --warning-color: var(--color-yellow-500);
+  --warning-color-weak: var(--color-yellow-50);
+  --warning-color-strong: var(--color-yellow-600);
 
-  --septenary-color: var(--color-grey-5);
-  --septenary-color-weak: var(--color-grey-1);
+  --danger-color: var(--color-red-500);
+  --danger-color-weak: var(--color-red-50);
+  --danger-color-strong: var(--color-red-600);
 
-  --octonary-color: var(--color-grey-1);
-  --octonary-color-weak: var(--color-grey-0);
+  --disabled-color: var(--color-grey-400);
+  --disabled-color-weak: var(--color-grey-50);
+  --disabled-color-strong: var(--color-grey-600);
 
-  --nonary-color: var(--color-grey-0);
+  --error-color: var(--color-red-500);
+  --error-color-weak: var(--color-red-50);
+  --error-color-strong: var(--color-red-600);
+
+  --ghost-color: transparent; // 투명한 색상
+
+  --background-default: var(--color-white);
+  --background-weak: var(--color-grey-50);
+  --background-strong: var(--color-grey-100);
+
+  --background-default: var(--color-white);
+  --background-weak: var(--color-grey-50);
+  --background-strong: var(--color-grey-100);
+
+  --background-default: var(--color-white);
+  --background-weak: var(--color-grey-50);
+  --background-strong: var(--color-grey-100);
 }

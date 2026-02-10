@@ -9,6 +9,9 @@
   --padding-button-lg-y: 14px;
   --padding-button-lg-x: 16px;
 
+  --padding-button-xl-y: 16px;
+  --padding-button-xl-x: 20px;
+
   /* Button Font Size */
   --font-button-sm-size: var(--t-f14-text-fontSize);
   --font-button-sm-lineHeight: var(--t-f14-text-lineHeight);
@@ -23,4 +26,5 @@
   --border-radius-button-sm: var(--radius-sm);
   --border-radius-button-md: var(--radius-md);
   --border-radius-button-lg: var(--radius-lg);
+  --border-radius-button-xl: var(--radius-xl);
 }

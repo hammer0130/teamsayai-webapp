@@ -1,0 +1,61 @@
+:root {
+  // ============ Trigger ============
+  --ui-select-trigger-background: var(--background-default);
+  --ui-select-trigger-border: var(--semantic-border-default);
+  --ui-select-trigger-border-focus: var(--semantic-border-focus);
+  --ui-select-trigger-border-invalid: var(--semantic-border-error);
+  --ui-select-trigger-text: var(--semantic-text-primary);
+  --ui-select-trigger-placeholder: var(--semantic-text-tertiary);
+  --ui-select-trigger-padding: 10px 14px;
+  --ui-select-trigger-min-height: 40px;
+  --ui-select-trigger-border-radius: 8px;
+  --ui-select-trigger-font-size: 14px;
+
+  // ============ Trigger Disabled ============
+  --ui-select-trigger-disabled-background: var(--disabled-color-weak);
+  --ui-select-trigger-disabled-border: var(--disabled-color);
+  --ui-select-trigger-disabled-text: var(--semantic-text-disabled);
+
+  // ============ Icon ============
+  --ui-select-icon-color: var(--semantic-text-secondary);
+  --ui-select-icon-size: 16px;
+
+  // ============ Content ============
+  --ui-select-content-background: var(--background-default);
+  --ui-select-content-border: var(--semantic-border-default);
+  --ui-select-content-border-radius: 8px;
+  --ui-select-content-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --ui-select-content-padding: 4px;
+  --ui-select-content-max-height: 300px;
+
+  // ============ Viewport ============
+  --ui-select-viewport-padding: 4px;
+
+  // ============ Item ============
+  --ui-select-item-background: transparent;
+  --ui-select-item-background-hover: var(--gray-100);
+  --ui-select-item-background-active: var(--primary-color-weak);
+  --ui-select-item-text: var(--semantic-text-primary);
+  --ui-select-item-text-disabled: var(--semantic-text-disabled);
+  --ui-select-item-padding: 8px 12px;
+  --ui-select-item-border-radius: 4px;
+  --ui-select-item-font-size: 14px;
+
+  // ============ Item Indicator ============
+  --ui-select-item-indicator-color: var(--primary-color);
+  --ui-select-item-indicator-size: 16px;
+
+  // ============ Label ============
+  --ui-select-label-color: var(--semantic-text-secondary);
+  --ui-select-label-font-size: 12px;
+  --ui-select-label-padding: 8px 12px 4px;
+
+  // ============ Separator ============
+  --ui-select-separator-color: var(--semantic-border-default);
+  --ui-select-separator-margin: 4px 0;
+
+  // ============ Scroll Button ============
+  --ui-select-scroll-button-background: var(--background-default);
+  --ui-select-scroll-button-color: var(--semantic-text-secondary);
+  --ui-select-scroll-button-height: 24px;
+}

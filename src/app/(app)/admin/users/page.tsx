@@ -2,12 +2,16 @@
 
 import { useState } from "react";
 
+import { Button } from "@/components/button";
+
+import { UserPageRoot, UserPageTitle, UserForm } from "./UsersPage.styles";
+
 type CreateUserPayload = {
   password: string;
   name: string;
   role: "admin" | "member";
   team_role: "감독" | "코치" | "총무" | "선수";
-  member_id: string; 
+  member_id: string;
   back_no: number | null;
   player_id: number | null;
   position: string;
@@ -17,12 +21,15 @@ type CreateUserPayload = {
   email: string;
 };
 
+function PageTitle({ title }: { title: string }) {
+  return <UserPageTitle>{title}</UserPageTitle>;
+}
+
 export default function AdminUsersPage() {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [backNo, setBackNo] = useState<number | null>(null);
   const [memberId, setMemberId] = useState<string>("");
-
 
   const [form, setForm] = useState<CreateUserPayload>({
     member_id: "",
@@ -40,7 +47,7 @@ export default function AdminUsersPage() {
   });
 
   const onChange = (key: keyof CreateUserPayload, value: any) => {
-    setForm(prev => ({ ...prev, [key]: value }));
+    setForm((prev) => ({ ...prev, [key]: value }));
   };
 
   const submit = async () => {
@@ -57,11 +64,11 @@ export default function AdminUsersPage() {
 
       const payload = {
         ...form,
-        member_id: form.member_id.trim()
+        member_id: form.member_id.trim(),
       };
 
       console.log(payload);
-      
+
       const res = await fetch("/api/admin/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -76,7 +83,7 @@ export default function AdminUsersPage() {
 
       setMsg(`등록 완료! userId=${data.id}`);
       // 입력값 초기화
-      setForm(prev => ({
+      setForm((prev) => ({
         ...prev,
         name: "",
         member_id: "",
@@ -97,18 +104,18 @@ export default function AdminUsersPage() {
   };
 
   return (
-    <div style={{ padding: 24, maxWidth: 640 }}>
-      <h1 style={{ fontSize: 22, fontWeight: 700 }}>회원 등록</h1>
+    <UserPageRoot>
+      <PageTitle title="회원 등록" />
 
-      <div style={{ display: "grid", gap: 12, marginTop: 16 }}>
+      <UserForm>
         <label>
           게임원 아이디 (member_id)
           <input
             value={form.member_id}
-            onChange={e => {
+            onChange={(e) => {
               const value = e.target.value;
               setMemberId(value);
-              setForm(prev => ({
+              setForm((prev) => ({
                 ...prev,
                 member_id: value,
                 email: `${value}@teamsayai.com`,
@@ -122,7 +129,7 @@ export default function AdminUsersPage() {
           이름 (name)
           <input
             value={form.name}
-            onChange={e => onChange("name", e.target.value)}
+            onChange={(e) => onChange("name", e.target.value)}
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           />
         </label>
@@ -131,7 +138,7 @@ export default function AdminUsersPage() {
           권한 (role)
           <select
             value={form.role}
-            onChange={e => onChange("role", e.target.value)}
+            onChange={(e) => onChange("role", e.target.value)}
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           >
             <option value="member">member</option>
@@ -143,7 +150,7 @@ export default function AdminUsersPage() {
           팀 역할 (team_role)
           <select
             value={form.team_role}
-            onChange={e => onChange("team_role", e.target.value)}
+            onChange={(e) => onChange("team_role", e.target.value)}
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           >
             <option value="선수">선수</option>
@@ -158,13 +165,13 @@ export default function AdminUsersPage() {
           <input
             type="text"
             inputMode="numeric"
-            pattern="[0-9]*" 
+            pattern="[0-9]*"
             value={form.back_no ?? ""}
-            onChange={e => {
+            onChange={(e) => {
               const value = e.target.value;
               const newBackNo = value ? Number(value) : null;
               setBackNo(newBackNo);
-              setForm(prev => ({
+              setForm((prev) => ({
                 ...prev,
                 back_no: newBackNo,
                 password: newBackNo !== null ? `teamsayai${newBackNo}` : "",
@@ -178,7 +185,12 @@ export default function AdminUsersPage() {
           선수 아이디 (player_id)
           <input
             value={form.player_id ?? ""}
-            onChange={e => onChange("player_id", e.target.value ? Number(e.target.value) : null)}
+            onChange={(e) =>
+              onChange(
+                "player_id",
+                e.target.value ? Number(e.target.value) : null,
+              )
+            }
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           />
         </label>
@@ -187,7 +199,7 @@ export default function AdminUsersPage() {
           포지션 (position)
           <input
             value={form.position}
-            onChange={e => onChange("position", e.target.value)}
+            onChange={(e) => onChange("position", e.target.value)}
             placeholder="예: 투수, 포수"
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           />
@@ -197,7 +209,7 @@ export default function AdminUsersPage() {
           입단연도 (since)
           <input
             value={form.since ?? ""}
-            onChange={e => onChange("since", e.target.value)}
+            onChange={(e) => onChange("since", e.target.value)}
             placeholder="2012"
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           />
@@ -207,7 +219,7 @@ export default function AdminUsersPage() {
           <input
             type="checkbox"
             checked={form.active}
-            onChange={e => onChange("active", e.target.checked)}
+            onChange={(e) => onChange("active", e.target.checked)}
           />
           활동 여부 (active)
         </label>
@@ -216,21 +228,16 @@ export default function AdminUsersPage() {
           비고 (note)
           <input
             value={form.note}
-            onChange={e => onChange("note", e.target.value)}
+            onChange={(e) => onChange("note", e.target.value)}
             style={{ width: "100%", padding: 10, marginTop: 6 }}
           />
         </label>
-
-        <button
-          onClick={submit}
-          disabled={loading}
-          style={{ padding: 12, fontWeight: 700, cursor: "pointer" }}
-        >
+        <Button onClick={submit} disabled={loading} size="large">
           {loading ? "등록 중..." : "회원 등록"}
-        </button>
+        </Button>
 
         {msg && <p style={{ marginTop: 8 }}>{msg}</p>}
-      </div>
-    </div>
+      </UserForm>
+    </UserPageRoot>
   );
 }

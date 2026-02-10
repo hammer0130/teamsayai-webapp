@@ -1,0 +1,235 @@
+// ============ Root: .ui-accordion ============
+
+.ui-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-accordion-gap);
+  width: var(--ui-accordion-width);
+  background-color: var(--ui-accordion-background);
+}
+
+// ============ Item: .ui-accordion__item ============
+
+.ui-accordion__item {
+  background-color: var(--ui-accordion-item-background);
+  overflow: hidden;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--ui-accordion-item-border-color);
+  }
+
+  // Variant: Enclosed — item has border and background
+  .ui-accordion--enclosed & {
+    border: 1px solid var(--ui-accordion-enclosed-item-border-color);
+    border-radius: var(--ui-accordion-enclosed-item-border-radius);
+    background-color: var(--ui-accordion-enclosed-item-background);
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--ui-accordion-enclosed-item-border-color);
+    }
+  }
+
+  // Variant: Soft — no item border, trigger gets background when open
+  .ui-accordion--soft & {
+    border-bottom-color: var(--semantic-border-default);
+
+    &:not(:last-child) {
+      border-bottom-width: 1px;
+    }
+  }
+}
+
+// ============ Header: .ui-accordion__header ============
+
+.ui-accordion__header {
+  margin: 0;
+}
+
+// ============ Trigger: .ui-accordion__trigger ============
+
+.ui-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: var(--ui-accordion-trigger-min-height-md);
+  padding: var(--ui-accordion-trigger-padding-md);
+  background-color: var(--ui-accordion-trigger-background);
+  color: var(--ui-accordion-trigger-text);
+  font-size: var(--ui-accordion-trigger-font-size-md);
+  font-weight: var(--ui-accordion-trigger-font-weight);
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  // transition:
+  //   background-color 0.15s ease,
+  //   color 0.15s ease,
+  //   border-color 0.15s ease;
+
+  &:hover:not([data-disabled]) {
+    background-color: var(--ui-accordion-trigger-background-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+  }
+
+  &[data-state="open"] {
+    background-color: var(--ui-accordion-trigger-background-open);
+    .ui-accordion__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    color: var(--ui-accordion-trigger-text-disabled);
+    opacity: 0.6;
+  }
+
+  // Chevron / icon (when used inside trigger)
+  [data-accordion-chevron],
+  .ui-accordion__chevron {
+    flex-shrink: 0;
+    margin-left: 8px;
+    color: var(--ui-accordion-trigger-icon-color);
+    transition:
+      transform 0.2s ease,
+      color 0.15s ease;
+  }
+
+  &[data-state="open"] [data-accordion-chevron],
+  &[data-state="open"] .ui-accordion__chevron {
+    transform: rotate(180deg);
+    color: var(--ui-accordion-trigger-icon-color-open);
+  }
+
+  // ============ Sizes ============
+
+  &--small {
+    min-height: var(--ui-accordion-trigger-min-height-sm);
+    padding: var(--ui-accordion-trigger-padding-sm);
+    font-size: var(--ui-accordion-trigger-font-size-sm);
+  }
+
+  &--medium {
+    min-height: var(--ui-accordion-trigger-min-height-md);
+    padding: var(--ui-accordion-trigger-padding-md);
+    font-size: var(--ui-accordion-trigger-font-size-md);
+  }
+
+  &--large {
+    min-height: var(--ui-accordion-trigger-min-height-lg);
+    padding: var(--ui-accordion-trigger-padding-lg);
+    font-size: var(--ui-accordion-trigger-font-size-lg);
+  }
+
+  &--xlarge {
+    min-height: var(--ui-accordion-trigger-min-height-xl);
+    padding: var(--ui-accordion-trigger-padding-xl);
+    font-size: var(--ui-accordion-trigger-font-size-xl);
+  }
+
+  // ============ Variant: Line ============
+
+  &--line {
+    position: relative;
+
+    &[data-state="open"] {
+      font-weight: 600;
+    }
+  }
+
+  // ============ Variant: Enclosed ============
+
+  &--enclosed {
+    border-radius: var(--ui-accordion-enclosed-trigger-border-radius);
+
+    &[data-state="open"] {
+      background-color: var(--ui-accordion-enclosed-trigger-background-open);
+    }
+
+    &:hover:not([data-disabled]) {
+      background-color: var(--gray-100);
+    }
+  }
+
+  // ============ Variant: Soft ============
+
+  &--soft {
+    border-radius: var(--ui-accordion-soft-trigger-border-radius);
+
+    &[data-state="open"] {
+      background-color: var(--ui-accordion-soft-trigger-background-open);
+      color: var(--ui-accordion-soft-trigger-text-open);
+    }
+
+    &[data-state="open"] [data-accordion-chevron],
+    &[data-state="open"] .ui-accordion__chevron {
+      color: var(--ui-accordion-soft-trigger-text-open);
+    }
+  }
+}
+
+// ============ Content: .ui-accordion__content ============
+
+// Content: 열림/닫힘 애니메이션은 사용자 단에서 추가.
+// 예시 (앱/스토리 스타일에서):
+//   .ui-accordion__content[data-state="open"] {
+//     animation: my-accordion-open 0.2s ease-out;
+//   }
+//   .ui-accordion__content[data-state="closed"] {
+//     animation: my-accordion-closed 0.2s ease-out;
+//   }
+//   @keyframes my-accordion-open {
+//     from { height: 0; opacity: 0; }
+//     to { height: var(--radix-accordion-content-height); opacity: 1; }
+//   }
+//   @keyframes my-accordion-closed {
+//     from { height: var(--radix-accordion-content-height); opacity: 1; }
+//     to { height: 0; opacity: 0; }
+//   }
+.ui-accordion__content {
+  overflow: hidden;
+  padding: var(--ui-accordion-content-padding);
+  background-color: var(--ui-accordion-content-background);
+  color: var(--ui-accordion-content-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+// Enclosed variant: content background
+.ui-accordion--enclosed .ui-accordion__content {
+  background-color: var(--ui-accordion-enclosed-content-background);
+}
+
+// ============ Horizontal orientation ============
+
+.ui-accordion[data-orientation="horizontal"] {
+  flex-direction: row;
+
+  .ui-accordion__item {
+    border-bottom: none;
+    border-right: 1px solid var(--ui-accordion-item-border-color);
+
+    &:not(:last-child) {
+      border-bottom: none;
+      border-right: 1px solid var(--ui-accordion-item-border-color);
+    }
+  }
+
+  .ui-accordion__trigger {
+    justify-content: center;
+    min-height: auto;
+    width: auto;
+  }
+
+  .ui-accordion__content {
+    > div {
+      padding: 16px;
+    }
+  }
+}

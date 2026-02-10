@@ -1,0 +1,56 @@
+:root {
+  // ============ Root ============
+  --ui-accordion-background: transparent;
+  --ui-accordion-gap: 0;
+  --ui-accordion-width: 100%;
+
+  // ============ Item ============
+  --ui-accordion-item-border-color: var(--semantic-border-default);
+  --ui-accordion-item-background: transparent;
+
+  // ============ Trigger ============
+  --ui-accordion-trigger-background: transparent;
+  --ui-accordion-trigger-background-hover: var(--gray-100);
+  --ui-accordion-trigger-background-open: transparent;
+  --ui-accordion-trigger-text: var(--semantic-text-primary);
+  --ui-accordion-trigger-text-disabled: var(--semantic-text-disabled);
+  --ui-accordion-trigger-border-color: transparent;
+  --ui-accordion-trigger-border-active: var(--primary-color);
+  --ui-accordion-trigger-font-weight: 500;
+  --ui-accordion-trigger-icon-color: var(--semantic-text-secondary);
+  --ui-accordion-trigger-icon-color-open: var(--primary-color);
+
+  // ============ Trigger Sizes ============
+  --ui-accordion-trigger-padding-sm: 8px 12px;
+  --ui-accordion-trigger-padding-md: 12px 16px;
+  --ui-accordion-trigger-padding-lg: 14px 20px;
+  --ui-accordion-trigger-padding-xl: 16px 24px;
+
+  --ui-accordion-trigger-font-size-sm: 13px;
+  --ui-accordion-trigger-font-size-md: 14px;
+  --ui-accordion-trigger-font-size-lg: 16px;
+  --ui-accordion-trigger-font-size-xl: 18px;
+
+  --ui-accordion-trigger-min-height-sm: 36px;
+  --ui-accordion-trigger-min-height-md: 44px;
+  --ui-accordion-trigger-min-height-lg: 52px;
+  --ui-accordion-trigger-min-height-xl: 60px;
+
+  // ============ Content ============
+  --ui-accordion-content-padding: 12px 16px 16px;
+  --ui-accordion-content-text: var(--semantic-text-secondary);
+  --ui-accordion-content-background: transparent;
+
+  // ============ Variant: Enclosed ============
+  --ui-accordion-enclosed-item-background: var(--background-default);
+  --ui-accordion-enclosed-item-border-radius: 8px;
+  --ui-accordion-enclosed-item-border-color: var(--semantic-border-default);
+  --ui-accordion-enclosed-trigger-border-radius: 6px;
+  --ui-accordion-enclosed-trigger-background-open: var(--background-weak);
+  --ui-accordion-enclosed-content-background: var(--background-default);
+
+  // ============ Variant: Soft ============
+  --ui-accordion-soft-trigger-background-open: var(--primary-color-weak);
+  --ui-accordion-soft-trigger-text-open: var(--primary-color);
+  --ui-accordion-soft-trigger-border-radius: 6px;
+}

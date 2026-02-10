@@ -1,0 +1,61 @@
+.ui-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: var(--ui-switch-width);
+  height: var(--ui-switch-height);
+  padding: 2px;
+  border-radius: var(--ui-switch-border-radius);
+  border: 1px solid transparent;
+  background-color: var(--ui-switch-background);
+
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--ui-switch-focus-ring);
+    outline-offset: 2px;
+  }
+
+  // ============ Checked state (Radix 자동 관리) ============
+  &[data-state="checked"] {
+    background-color: var(--ui-switch-background-checked);
+  }
+
+  // ============ Invalid state ============
+  &[data-invalid] {
+    border-color: var(--ui-switch-border-invalid);
+
+    // &[data-state="checked"] {
+    //   background-color: var(--ui-switch-background-invalid);
+    // }
+  }
+
+  // ============ Disabled state ============
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: var(--ui-switch-disabled-opacity);
+  }
+
+  // ============ Thumb ============
+  &__thumb {
+    display: block;
+    width: var(--ui-switch-thumb-size);
+    height: var(--ui-switch-thumb-size);
+    border-radius: var(--ui-switch-thumb-border-radius);
+    background-color: var(--ui-switch-thumb-background);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s ease;
+    transform: translateX(0);
+
+    &[data-state="checked"] {
+      transform: translateX(
+        calc(var(--ui-switch-width) - var(--ui-switch-thumb-size) - 4px)
+      );
+    }
+  }
+}

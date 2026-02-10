@@ -1,0 +1,75 @@
+.ui-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--ui-checkbox-border-color);
+  border-radius: var(--ui-checkbox-border-radius);
+  background: var(--ui-checkbox-background-color);
+
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  // ============ Checked state (Radix 자동 관리) ============
+  &[data-state="checked"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  // ============ Indeterminate state (Radix 자동 관리) ============
+  &[data-state="indeterminate"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  // ============ Invalid state ============
+  &[data-invalid] {
+    border-color: var(--danger-color);
+
+    &:hover {
+      border-color: var(--danger-color);
+    }
+
+    &:focus-visible {
+      outline-color: var(--danger-color);
+    }
+
+    &[data-state="checked"],
+    &[data-state="indeterminate"] {
+      background-color: var(--danger-color);
+      border-color: var(--danger-color);
+    }
+  }
+
+  // ============ Disabled state ============
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // ============ Indicator ============
+  &__indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

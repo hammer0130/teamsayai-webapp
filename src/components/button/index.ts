@@ -1,7 +1,2 @@
-export { Button } from "./Button";
-export {
-  type Size,
-  type Color,
-  type Variant,
-  type Shape,
-} from "./Button.context";
+export { Button, type ButtonProps, type ButtonSlotProps } from "./Button";
+export { type ButtonContextValue } from "./Button.context";

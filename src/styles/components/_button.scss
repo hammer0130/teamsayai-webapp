@@ -1,7 +1,8 @@
+@use "sass:map";
+
+// ============ Block: .ui-button ============
+
 .ui-button {
-  // display: inline-flex;
-  // align-items: center;
-  // justify-content: center;
   border-radius: var(--border-radius-button-md);
   cursor: pointer;
   position: relative;
@@ -10,78 +11,256 @@
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+
   &:active {
-    .ui-button-press {
+    .ui-button__press {
       opacity: 0.25;
       z-index: 1;
     }
   }
-  &[data-variant="weak"] {
-    .ui-button-bg {
-      background-color: var(--primary-color-weak);
+
+  // Modifier: disabled
+  &[data-disabled] {
+    .ui-button__bg {
+      background-color: var(--disabled-color);
     }
     .ui-button__content {
-      color: var(--primary-color-strong);
+      color: var(--disabled-color-weak);
     }
   }
 
-  &[data-color="secondary"] {
-    .ui-button-bg {
-      background-color: var(--secondary-color);
+  // Modifier: loading
+  &[data-loading] {
+    .ui-button__bg {
+      background-color: var(--disabled-color);
     }
-  }
-  .ui-button-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-color);
-  }
-  .ui-button-press {
-    opacity: 0;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0);
-  }
-  .ui-button__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    min-height: 36px;
-    padding: 0 var(--padding-button-md-x);
-    font-size: var(--font-button-md-size);
-    line-height: var(--font-button-md-lineHeight);
-    color: var(--semantic-text-inverse);
+    .ui-button__content {
+      color: var(--disabled-color-weak);
+    }
   }
 
-  &[data-size="small"] {
-    .ui-button__content {
-      min-height: 30px;
-      border-radius: var(--radius-sm);
-      padding: 0 var(--padding-button-sm-x);
-      font-size: var(--font-button-sm-size);
-      line-height: var(--font-button-sm-lineHeight);
+  // Modifier: block
+  &.ui-button--block {
+    width: 100%;
+  }
+}
+
+// ============ Element: .ui-button__bg ============
+
+.ui-button__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+}
+
+// ============ Element: .ui-button__press ============
+
+.ui-button__press {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0);
+}
+
+// ============ Element: .ui-button__content ============
+
+.ui-button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  min-height: 36px;
+  padding: 0 var(--padding-button-md-x);
+  font-size: var(--font-button-md-size);
+  line-height: var(--font-button-md-lineHeight);
+  color: var(--semantic-text-inverse);
+  border-radius: inherit;
+}
+
+// ============ Modifier: Intent (--primary, --secondary, etc.) ============
+
+$button-intents: (
+  primary: var(--primary-color),
+  secondary: var(--secondary-color),
+  tertiary: var(--tertiary-color),
+  success: var(--success-color),
+  info: var(--info-color),
+  warning: var(--warning-color),
+  danger: var(--danger-color),
+);
+
+@each $intent, $color in $button-intents {
+  .ui-button--#{$intent} {
+    .ui-button__bg {
+      background-color: $color;
+    }
+
+    // Modifier: outline
+    &.ui-button--outline {
+      .ui-button__bg {
+        background-color: transparent;
+      }
+
+      .ui-button__content {
+        border: 1px solid $color;
+        color: $color;
+      }
+    }
+
+    // Modifier: ghost
+    &.ui-button--ghost {
+      .ui-button__bg {
+        background-color: transparent;
+      }
+
+      .ui-button__content {
+        color: $color;
+      }
+
+      &:hover {
+        .ui-button__bg {
+          background-color: color-mix(in srgb, $color 12%, transparent);
+        }
+      }
+
+      &:active {
+        .ui-button__bg {
+          background-color: color-mix(in srgb, $color 20%, transparent);
+        }
+      }
+
+      &:disabled,
+      &[data-state="disabled"] {
+        .ui-button__content {
+          color: var(--text-disabled-color);
+        }
+        .ui-button__bg {
+          background-color: transparent !important;
+        }
+      }
     }
   }
-  &[data-size="large"] {
-    border-radius: var(--radius-lg);
+}
+
+// ============ Modifier: Size (--small, --medium, --large, --xlarge) ============
+
+$button-size-alias: (
+  small: sm,
+  medium: md,
+  large: lg,
+  xlarge: xl,
+);
+
+$button-sizes: (
+  sm: (
+    radius: var(--border-radius-button-sm),
+    min-height: 30px,
+    padding-x: var(--padding-button-sm-x),
+    font-size: var(--font-button-sm-size),
+    line-height: var(--font-button-sm-lineHeight),
+  ),
+  md: (
+    radius: var(--border-radius-button-md),
+    min-height: 38px,
+    padding-x: var(--padding-button-md-x),
+    font-size: var(--font-button-md-size),
+    line-height: var(--font-button-md-lineHeight),
+  ),
+  lg: (
+    radius: var(--border-radius-button-lg),
+    min-height: 46px,
+    padding-x: var(--padding-button-lg-x),
+    font-size: var(--font-button-lg-size),
+    line-height: var(--font-button-lg-lineHeight),
+  ),
+  xl: (
+    radius: var(--border-radius-button-xl),
+    min-height: 53px,
+    padding-x: var(--padding-button-lg-x),
+    font-size: var(--font-button-lg-size),
+    line-height: var(--font-button-lg-lineHeight),
+  ),
+);
+
+@each $name, $alias in $button-size-alias {
+  $size: map.get($button-sizes, $alias);
+
+  .ui-button--#{$name} {
+    border-radius: map.get($size, radius);
+
     .ui-button__content {
-      min-height: 46px;
-      padding: 0 var(--padding-button-lg-x);
-      font-size: var(--font-button-lg-size);
-      line-height: var(--font-button-lg-lineHeight);
+      min-height: map.get($size, min-height);
+      padding: 0 map.get($size, padding-x);
+      font-size: map.get($size, font-size);
+      line-height: map.get($size, line-height);
+    }
+
+    // Modifier: icon-only (정사각형)
+    &.ui-button--icon-only {
+      .ui-button__content {
+        padding: 0;
+        width: map.get($size, min-height);
+        min-width: map.get($size, min-height);
+      }
     }
   }
-  &[data-size="xlarge"] {
-    border-radius: var(--radius-xl);
-    .ui-button__content {
-      min-height: 53px;
-      padding: 0 var(--padding-button-lg-x);
-      font-size: var(--font-button-lg-size);
-      line-height: var(--font-button-lg-lineHeight);
-    }
+}
+
+// ============ Element: Compound 서브 컴포넌트 ============
+
+// Icon
+.ui-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// Label
+.ui-button__label {
+  display: flex;
+  align-items: center;
+}
+
+// Prefix (왼쪽 아이콘)
+.ui-button__prefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// Suffix (오른쪽 아이콘)
+.ui-button__suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// Spinner
+.ui-button__spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-button__spinner-icon {
+  width: 1em;
+  height: 1em;
+  animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

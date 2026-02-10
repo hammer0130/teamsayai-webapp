@@ -1,0 +1,50 @@
+:root {
+  // ============ Root ============
+  --ui-dialog-z-index: 1000;
+
+  // ============ Trigger ============
+  --ui-dialog-trigger-background: transparent;
+  --ui-dialog-trigger-text: var(--semantic-text-primary);
+
+  // ============ Overlay ============
+  --ui-dialog-overlay-background: rgba(0, 0, 0, 0.5);
+  --ui-dialog-overlay-z-index: 1;
+
+  // ============ Content ============
+  --ui-dialog-content-background: var(--background-default);
+  --ui-dialog-content-border: var(--semantic-border-default);
+  --ui-dialog-content-border-radius: 8px;
+  --ui-dialog-content-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  --ui-dialog-content-padding: 24px;
+  --ui-dialog-content-max-width: 420px;
+  --ui-dialog-content-z-index: 2;
+
+  // ============ Title ============
+  --ui-dialog-title-font-size: 18px;
+  --ui-dialog-title-font-weight: 600;
+  --ui-dialog-title-color: var(--semantic-text-primary);
+  --ui-dialog-title-margin-bottom: 8px;
+
+  // ============ Description ============
+  --ui-dialog-description-font-size: 14px;
+  --ui-dialog-description-color: var(--semantic-text-secondary);
+  --ui-dialog-description-line-height: 1.5;
+  --ui-dialog-description-margin-bottom: 16px;
+
+  // ============ Close ============
+  --ui-dialog-close-background: transparent;
+  --ui-dialog-close-background-hover: var(--gray-100);
+  --ui-dialog-close-text: var(--semantic-text-primary);
+  --ui-dialog-close-padding: 8px 16px;
+  --ui-dialog-close-border-radius: 6px;
+  --ui-dialog-close-font-size: 14px;
+  --ui-dialog-close-font-weight: 500;
+
+  // ============ CloseButton (X 아이콘 버튼) ============
+  --ui-dialog-close-button-size: 32px;
+  --ui-dialog-close-button-icon-size: 16px;
+  --ui-dialog-close-button-color: var(--semantic-text-secondary);
+  --ui-dialog-close-button-color-hover: var(--semantic-text-primary);
+  --ui-dialog-close-button-background-hover: var(--gray-100);
+  --ui-dialog-close-button-border-radius: 6px;
+}

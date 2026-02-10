@@ -1,0 +1,198 @@
+// ============ Root: .ui-alert-dialog ============
+
+.ui-alert-dialog {
+  position: relative;
+}
+
+// ============ Trigger: .ui-alert-dialog__trigger ============
+
+.ui-alert-dialog__trigger {
+  background-color: var(--ui-alert-dialog-trigger-background);
+  color: var(--ui-alert-dialog-trigger-text);
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// ============ Overlay: .ui-alert-dialog__overlay ============
+
+.ui-alert-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ui-alert-dialog-overlay-z-index);
+  background-color: var(--ui-alert-dialog-overlay-background);
+  animation: ui-alert-dialog-overlay-in 0.15s ease-out;
+
+  &[data-state="closed"] {
+    animation: ui-alert-dialog-overlay-out 0.15s ease-in;
+  }
+}
+
+@keyframes ui-alert-dialog-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ui-alert-dialog-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// ============ Content: .ui-alert-dialog__content ============
+
+.ui-alert-dialog__content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--ui-alert-dialog-content-z-index);
+  transform: translate(-50%, -50%);
+  width: calc(100% - 32px);
+  max-width: var(--ui-alert-dialog-content-max-width);
+  padding: var(--ui-alert-dialog-content-padding);
+  background-color: var(--ui-alert-dialog-content-background);
+  border: 1px solid var(--ui-alert-dialog-content-border);
+  border-radius: var(--ui-alert-dialog-content-border-radius);
+  box-shadow: var(--ui-alert-dialog-content-shadow);
+  outline: none;
+  animation: ui-alert-dialog-content-in 0.2s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &[data-state="closed"] {
+    animation: ui-alert-dialog-content-out 0.15s ease-in;
+  }
+}
+
+@keyframes ui-alert-dialog-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes ui-alert-dialog-content-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+}
+
+// ============ Title: .ui-alert-dialog__title ============
+
+.ui-alert-dialog__title {
+  margin: 0 0 var(--ui-alert-dialog-title-margin-bottom);
+  font-size: var(--ui-alert-dialog-title-font-size);
+  font-weight: var(--ui-alert-dialog-title-font-weight);
+  color: var(--ui-alert-dialog-title-color);
+  line-height: 1.3;
+}
+
+// ============ Description: .ui-alert-dialog__description ============
+
+.ui-alert-dialog__description {
+  margin: 0 0 var(--ui-alert-dialog-description-margin-bottom);
+  font-size: var(--ui-alert-dialog-description-font-size);
+  color: var(--ui-alert-dialog-description-color);
+  line-height: var(--ui-alert-dialog-description-line-height);
+}
+
+// ============ Footer (Cancel + Action) ============
+// Title / Description 다음에 오는 버튼 그룹 wrapper에 flex 적용 (Radix 예시처럼 div로 감싸는 경우)
+.ui-alert-dialog__content > .ui-alert-dialog__description + * {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+// ============ Cancel: .ui-alert-dialog__cancel ============
+// :not(.ui-button) — asChild로 Button 사용 시 Button의 size/intent가 적용되도록 크기·색 스타일 제한
+
+.ui-alert-dialog__cancel {
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:not(.ui-button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ui-alert-dialog-cancel-padding);
+    font-size: var(--ui-alert-dialog-cancel-font-size);
+    font-weight: var(--ui-alert-dialog-cancel-font-weight);
+    color: var(--ui-alert-dialog-cancel-text);
+    background-color: var(--ui-alert-dialog-cancel-background);
+    border: 1px solid var(--ui-alert-dialog-cancel-border);
+    border-radius: var(--ui-alert-dialog-cancel-border-radius);
+
+    &:hover {
+      background-color: var(--ui-alert-dialog-cancel-background-hover);
+    }
+  }
+}
+
+// ============ Action: .ui-alert-dialog__action ============
+// :not(.ui-button) — asChild로 Button 사용 시 Button의 size/intent가 적용되도록 크기·색 스타일 제한
+
+.ui-alert-dialog__action {
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:not(.ui-button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ui-alert-dialog-action-padding);
+    font-size: var(--ui-alert-dialog-action-font-size);
+    font-weight: var(--ui-alert-dialog-action-font-weight);
+    color: var(--ui-alert-dialog-action-text);
+    background-color: var(--ui-alert-dialog-action-background);
+    border: none;
+    border-radius: var(--ui-alert-dialog-action-border-radius);
+
+    &:hover {
+      background-color: var(--ui-alert-dialog-action-background-hover);
+    }
+  }
+}
