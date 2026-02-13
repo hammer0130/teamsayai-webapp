@@ -4,19 +4,27 @@ import clsx from "clsx";
 
 import { TextareaContext, type TextareaContextValue } from "./Textarea.context";
 
-/** Textarea 컴포넌트 Props (단일 or compound 모두 지원) */
+/**
+ * Textarea 컴포넌트 Props (단일 or compound 모두 지원)
+ * Radix와 동일: 제어는 value + onValueChange, 비제어는 defaultValue + onValueChange
+ */
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   size?: "small" | "medium" | "large" | "xlarge";
   state?: "disabled" | "loading";
   invalid?: boolean;
   block?: boolean;
+  /** 글자 수 카운트 표시 여부 */
+  showCount?: boolean;
   children?: React.ReactNode;
+  /** Radix 스타일: 값 변경 시 (value: string) 전달. value(defaultValue)와 함께 사용 */
+  onValueChange?: (value: string) => void;
 }
 
 /** Control Props: compound 모드에서 실제 <textarea> */
 export interface TextareaControlProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   state?: "disabled" | "loading";
   invalid?: boolean;
+  onValueChange?: (value: string) => void;
 }
 
 /** Slot(Prefix/Suffix) Props */
@@ -38,8 +46,14 @@ const TextareaRoot = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       state,
       block = DEFAULT_PROPS.block,
       invalid = false,
+      showCount = false,
+      maxLength,
       className,
       children,
+      value,
+      defaultValue,
+      onChange,
+      onValueChange,
       ...restProps
     },
     ref,
@@ -47,32 +61,99 @@ const TextareaRoot = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const compoundMode = hasChildren(children);
     const isDisabled = state === "disabled";
 
-    const contextValue = React.useMemo<TextareaContextValue>(
-      () => ({ size, state, invalid, block }),
-      [size, state, invalid, block],
+    // 글자 수 트래킹 (단일 모드에서만 사용)
+    const [charCount, setCharCount] = React.useState(() => {
+      if (value != null) return String(value).length;
+      if (defaultValue != null) return String(defaultValue).length;
+      return 0;
+    });
+
+    // controlled value 변경 추적
+    React.useEffect(() => {
+      if (value != null) {
+        setCharCount(String(value).length);
+      }
+    }, [value]);
+
+    const handleChange = React.useCallback(
+      (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCharCount(e.target.value.length);
+        onChange?.(e);
+        onValueChange?.(e.target.value);
+      },
+      [onChange, onValueChange],
     );
+
+    const isOverLimit = maxLength != null && charCount > maxLength;
+    const isInvalid = invalid || isOverLimit;
+
+    const contextValue = React.useMemo<TextareaContextValue>(
+      () => ({
+        size,
+        invalid: isInvalid,
+        block,
+        ...(state !== undefined && { state }),
+      }),
+      [size, state, isInvalid, block],
+    );
+
+    const countElement = showCount ? (
+      <span
+        className={clsx(
+          "ui-textarea__count",
+          isOverLimit && "ui-textarea__count--over",
+        )}
+      >
+        {charCount}
+        {maxLength != null && `/${maxLength}`}
+      </span>
+    ) : null;
 
     // 1) 단일 모드
     if (!compoundMode) {
+      const textarea = (
+        <textarea
+          ref={ref}
+          disabled={isDisabled}
+          aria-disabled={isDisabled || undefined}
+          data-disabled={isDisabled || undefined}
+          aria-invalid={isInvalid || undefined}
+          data-invalid={isInvalid || undefined}
+          className={clsx(
+            "ui-textarea",
+            `ui-textarea--${size}`,
+            block && "ui-textarea--block",
+            isInvalid && "ui-textarea--invalid",
+            className,
+          )}
+          data-state={state}
+          value={value}
+          defaultValue={defaultValue}
+          onChange={handleChange}
+          maxLength={showCount ? undefined : maxLength}
+          {...restProps}
+        />
+      );
+
+      if (showCount) {
+        return (
+          <TextareaContext.Provider value={contextValue}>
+            <div
+              className={clsx(
+                "ui-textarea__wrapper",
+                block && "ui-textarea__wrapper--block",
+              )}
+            >
+              {textarea}
+              {countElement}
+            </div>
+          </TextareaContext.Provider>
+        );
+      }
+
       return (
         <TextareaContext.Provider value={contextValue}>
-          <textarea
-            ref={ref}
-            disabled={isDisabled}
-            aria-disabled={isDisabled || undefined}
-            data-disabled={isDisabled || undefined}
-            aria-invalid={invalid || undefined}
-            data-invalid={invalid || undefined}
-            className={clsx(
-              "ui-textarea",
-              `ui-textarea--${size}`,
-              block && "ui-textarea--block",
-              invalid && "ui-textarea--invalid",
-              className,
-            )}
-            data-state={state}
-            {...restProps}
-          />
+          {textarea}
         </TextareaContext.Provider>
       );
     }
@@ -82,17 +163,25 @@ const TextareaRoot = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <TextareaContext.Provider value={contextValue}>
         <div
           className={clsx(
-            "ui-textarea__group",
-            `ui-textarea__group--${size}`,
-            block && "ui-textarea__group--block",
-            invalid && "ui-textarea__group--invalid",
-            className,
+            "ui-textarea__wrapper",
+            block && "ui-textarea__wrapper--block",
           )}
-          data-state={state}
-          aria-disabled={isDisabled || undefined}
-          aria-invalid={invalid || undefined}
         >
-          {children}
+          <div
+            className={clsx(
+              "ui-textarea__group",
+              `ui-textarea__group--${size}`,
+              block && "ui-textarea__group--block",
+              isInvalid && "ui-textarea__group--invalid",
+              className,
+            )}
+            data-state={state}
+            aria-disabled={isDisabled || undefined}
+            aria-invalid={isInvalid || undefined}
+          >
+            {children}
+          </div>
+          {countElement}
         </div>
       </TextareaContext.Provider>
     );
@@ -104,7 +193,15 @@ TextareaRoot.displayName = "Textarea";
 /** Compound: 실제 textarea */
 const Control = React.forwardRef<HTMLTextAreaElement, TextareaControlProps>(
   (
-    { state: stateProp, invalid: invalidProp, className, disabled, ...rest },
+    {
+      state: stateProp,
+      invalid: invalidProp,
+      className,
+      disabled,
+      onChange,
+      onValueChange,
+      ...rest
+    },
     ref,
   ) => {
     const ctx = React.useContext(TextareaContext);
@@ -112,6 +209,14 @@ const Control = React.forwardRef<HTMLTextAreaElement, TextareaControlProps>(
     const state = stateProp ?? ctx?.state;
     const invalid = invalidProp ?? ctx?.invalid ?? false;
     const isDisabled = state === "disabled" || Boolean(disabled);
+
+    const handleChange = React.useCallback(
+      (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onChange?.(e);
+        onValueChange?.(e.target.value);
+      },
+      [onChange, onValueChange],
+    );
 
     return (
       <textarea
@@ -121,6 +226,7 @@ const Control = React.forwardRef<HTMLTextAreaElement, TextareaControlProps>(
         aria-disabled={isDisabled || undefined}
         aria-invalid={invalid || undefined}
         data-state={state}
+        onChange={handleChange}
         {...rest}
       />
     );

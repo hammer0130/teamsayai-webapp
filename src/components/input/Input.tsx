@@ -4,7 +4,10 @@ import clsx from "clsx";
 
 import { InputContext, type InputContextValue } from "./Input.context";
 
-/** Input 컴포넌트 Props (단일 or compound 모두 지원) */
+/**
+ * Input 컴포넌트 Props (단일 or compound 모두 지원)
+ * Radix와 동일: 제어는 value + onValueChange, 비제어는 defaultValue + onValueChange
+ */
 export interface InputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "size"
@@ -14,6 +17,8 @@ export interface InputProps extends Omit<
   invalid?: boolean;
   block?: boolean;
   children?: React.ReactNode;
+  /** Radix 스타일: 값 변경 시 (value: string) 전달. value(defaultValue)와 함께 사용 */
+  onValueChange?: (value: string) => void;
 }
 
 /** Control Props: compound 모드에서 실제 <input> */
@@ -23,6 +28,7 @@ export interface InputControlProps extends Omit<
 > {
   state?: "disabled" | "loading";
   invalid?: boolean;
+  onValueChange?: (value: string) => void;
 }
 
 /** Slot(Prefix/Suffix) Props */
@@ -48,6 +54,8 @@ const InputRoot = React.forwardRef<HTMLInputElement, InputProps>(
       invalid = false,
       className,
       children,
+      onChange,
+      onValueChange,
       ...restProps
     },
     ref,
@@ -56,8 +64,21 @@ const InputRoot = React.forwardRef<HTMLInputElement, InputProps>(
     const isDisabled = state === "disabled";
 
     const contextValue = React.useMemo<InputContextValue>(
-      () => ({ size, state, invalid, block }),
+      () => ({
+        size,
+        invalid,
+        block,
+        ...(state !== undefined && { state }),
+      }),
       [size, state, invalid, block],
+    );
+
+    const handleChange = React.useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e);
+        onValueChange?.(e.target.value);
+      },
+      [onChange, onValueChange],
     );
 
     // 1) 단일 모드
@@ -80,6 +101,7 @@ const InputRoot = React.forwardRef<HTMLInputElement, InputProps>(
               className,
             )}
             data-state={state}
+            onChange={handleChange}
             {...restProps}
           />
         </InputContext.Provider>
@@ -113,7 +135,15 @@ InputRoot.displayName = "Input";
 /** Compound: 실제 input */
 const Control = React.forwardRef<HTMLInputElement, InputControlProps>(
   (
-    { state: stateProp, invalid: invalidProp, className, disabled, ...rest },
+    {
+      state: stateProp,
+      invalid: invalidProp,
+      className,
+      disabled,
+      onChange,
+      onValueChange,
+      ...rest
+    },
     ref,
   ) => {
     const ctx = React.useContext(InputContext);
@@ -121,6 +151,14 @@ const Control = React.forwardRef<HTMLInputElement, InputControlProps>(
     const state = stateProp ?? ctx?.state;
     const invalid = invalidProp ?? ctx?.invalid ?? false;
     const isDisabled = state === "disabled" || Boolean(disabled);
+
+    const handleChange = React.useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e);
+        onValueChange?.(e.target.value);
+      },
+      [onChange, onValueChange],
+    );
 
     return (
       <input
@@ -130,6 +168,7 @@ const Control = React.forwardRef<HTMLInputElement, InputControlProps>(
         aria-disabled={isDisabled || undefined}
         aria-invalid={invalid || undefined}
         data-state={state}
+        onChange={handleChange}
         {...rest}
       />
     );

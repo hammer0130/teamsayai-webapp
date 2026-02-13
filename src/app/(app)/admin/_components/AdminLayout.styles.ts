@@ -42,7 +42,7 @@ export const Sidebar = styled.aside<{ $open: boolean }>`
 `;
 
 export const SidebarHeader = styled.div`
-  padding: 16px 20px;
+  padding: 14px 20px;
   border-bottom: 1px solid var(--color-grey-200, #e5e8eb);
   min-height: ${TOPBAR_HEIGHT}px;
   display: flex;

@@ -13,9 +13,9 @@
   // ============ Content ============
   --ui-alert-dialog-content-background: var(--background-default);
   --ui-alert-dialog-content-border: var(--semantic-border-default);
-  --ui-alert-dialog-content-border-radius: 8px;
+  --ui-alert-dialog-content-border-radius: var(--primitive-size-radius-8);
   --ui-alert-dialog-content-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-  --ui-alert-dialog-content-padding: 24px;
+  --ui-alert-dialog-content-padding: var(--space-xl);
   --ui-alert-dialog-content-max-width: 420px;
   --ui-alert-dialog-content-z-index: 2;
 
@@ -23,21 +23,21 @@
   --ui-alert-dialog-title-font-size: 18px;
   --ui-alert-dialog-title-font-weight: 600;
   --ui-alert-dialog-title-color: var(--semantic-text-primary);
-  --ui-alert-dialog-title-margin-bottom: 8px;
+  --ui-alert-dialog-title-margin-bottom: var(--space-xs);
 
   // ============ Description ============
   --ui-alert-dialog-description-font-size: 14px;
   --ui-alert-dialog-description-color: var(--semantic-text-secondary);
   --ui-alert-dialog-description-line-height: 1.5;
-  --ui-alert-dialog-description-margin-bottom: 24px;
+  --ui-alert-dialog-description-margin-bottom: var(--space-xl);
 
   // ============ Cancel ============
   --ui-alert-dialog-cancel-background: transparent;
   --ui-alert-dialog-cancel-background-hover: var(--gray-100);
   --ui-alert-dialog-cancel-text: var(--semantic-text-secondary);
   --ui-alert-dialog-cancel-border: var(--semantic-border-default);
-  --ui-alert-dialog-cancel-padding: 8px 16px;
-  --ui-alert-dialog-cancel-border-radius: 6px;
+  --ui-alert-dialog-cancel-padding: var(--space-xs) var(--space-md);
+  --ui-alert-dialog-cancel-border-radius: var(--primitive-size-radius-6);
   --ui-alert-dialog-cancel-font-size: 14px;
   --ui-alert-dialog-cancel-font-weight: 500;
 
@@ -45,8 +45,8 @@
   --ui-alert-dialog-action-background: var(--primary-color);
   --ui-alert-dialog-action-background-hover: var(--primary-color-strong);
   --ui-alert-dialog-action-text: var(--semantic-text-inverse);
-  --ui-alert-dialog-action-padding: 8px 16px;
-  --ui-alert-dialog-action-border-radius: 6px;
+  --ui-alert-dialog-action-padding: var(--space-xs) var(--space-md);
+  --ui-alert-dialog-action-border-radius: var(--primitive-size-radius-6);
   --ui-alert-dialog-action-font-size: 14px;
   --ui-alert-dialog-action-font-weight: 500;
 }

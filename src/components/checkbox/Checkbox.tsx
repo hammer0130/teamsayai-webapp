@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import * as RadixCheckbox from "@radix-ui/react-checkbox";
-import { CheckIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 
+import { CheckIcon } from "@/components/icon";
 import type { CheckableOptions } from "@/types/component-api";
 
 import { CheckboxContext, type CheckboxContextValue } from "./Checkbox.context";

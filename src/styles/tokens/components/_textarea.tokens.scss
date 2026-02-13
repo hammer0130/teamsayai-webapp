@@ -16,11 +16,11 @@
   --textarea-disabled-border: var(--disabled-color);
   --textarea-disabled-text: var(--semantic-text-disabled);
 
-  // Size
-  --textarea-padding-sm: 8px 12px;
-  --textarea-padding-md: 10px 14px;
-  --textarea-padding-lg: 12px 16px;
-  --textarea-padding-xl: 14px 18px;
+  // Size (--space-* 계열)
+  --textarea-padding-sm: var(--space-xs) var(--space-sm);
+  --textarea-padding-md: var(--space-sm) var(--space-md);
+  --textarea-padding-lg: var(--space-sm) var(--space-md);
+  --textarea-padding-xl: var(--space-md) var(--space-lg);
 
   --textarea-font-size-sm: 13px;
   --textarea-font-size-md: 14px;
@@ -32,10 +32,10 @@
   --textarea-min-height-lg: 96px;
   --textarea-min-height-xl: 112px;
 
-  --textarea-border-radius-sm: 6px;
-  --textarea-border-radius-md: 8px;
-  --textarea-border-radius-lg: 10px;
-  --textarea-border-radius-xl: 12px;
+  --textarea-border-radius-sm: var(--primitive-size-radius-6);
+  --textarea-border-radius-md: var(--primitive-size-radius-8);
+  --textarea-border-radius-lg: var(--primitive-size-radius-12);
+  --textarea-border-radius-xl: var(--primitive-size-radius-12);
 
   // Line height
   --textarea-line-height: 1.5;

@@ -1,9 +1,22 @@
 :root {
   /* Border Radius */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
+  --primitive-size-radius-0: 0px;
+  --primitive-size-radius-2: 2px;
+  --primitive-size-radius-4: 4px;
+  --primitive-size-radius-6: 6px;
+  --primitive-size-radius-8: 8px;
+  --primitive-size-radius-12: 12px;
+  --primitive-size-radius-16: 16px;
+  --primitive-size-radius-20: 20px;
+  --primitive-size-radius-24: 24px;
+  --primitive-size-radius-32: 32px;
+  --primitive-size-radius-40: 40px;
+  --primitive-size-radius-full: 9999px;
+
+  /* Alias: 컴포넌트 size 대응 (sm/md/lg/xl) */
+  --radius-xs: var(--primitive-size-radius-6);
+  --radius-sm: var(--primitive-size-radius-6);
+  --radius-md: var(--primitive-size-radius-8);
+  --radius-lg: var(--primitive-size-radius-8);
+  --radius-xl: var(--primitive-size-radius-8);
 }

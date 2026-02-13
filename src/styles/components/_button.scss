@@ -147,9 +147,10 @@ $button-intents: (
   }
 }
 
-// ============ Modifier: Size (--small, --medium, --large, --xlarge) ============
+// ============ Modifier: Size (--xsmall, --small, --medium, --large, --xlarge) ============
 
 $button-size-alias: (
+  xsmall: xs,
   small: sm,
   medium: md,
   large: lg,
@@ -157,30 +158,37 @@ $button-size-alias: (
 );
 
 $button-sizes: (
+  xs: (
+    radius: var(--border-radius-button-xs),
+    min-height: var(--min-height-button-xs),
+    padding-x: var(--padding-button-xs-x),
+    font-size: var(--font-button-xs-size),
+    line-height: var(--font-button-xs-lineHeight),
+  ),
   sm: (
     radius: var(--border-radius-button-sm),
-    min-height: 30px,
+    min-height: var(--min-height-button-sm),
     padding-x: var(--padding-button-sm-x),
     font-size: var(--font-button-sm-size),
     line-height: var(--font-button-sm-lineHeight),
   ),
   md: (
     radius: var(--border-radius-button-md),
-    min-height: 38px,
+    min-height: var(--min-height-button-md),
     padding-x: var(--padding-button-md-x),
     font-size: var(--font-button-md-size),
     line-height: var(--font-button-md-lineHeight),
   ),
   lg: (
     radius: var(--border-radius-button-lg),
-    min-height: 46px,
+    min-height: var(--min-height-button-lg),
     padding-x: var(--padding-button-lg-x),
     font-size: var(--font-button-lg-size),
     line-height: var(--font-button-lg-lineHeight),
   ),
   xl: (
     radius: var(--border-radius-button-xl),
-    min-height: 53px,
+    min-height: var(--min-height-button-xl),
     padding-x: var(--padding-button-lg-x),
     font-size: var(--font-button-lg-size),
     line-height: var(--font-button-lg-lineHeight),
@@ -225,6 +233,7 @@ $button-sizes: (
 .ui-button__label {
   display: flex;
   align-items: center;
+  line-height: initial;
 }
 
 // Prefix (왼쪽 아이콘)
@@ -233,6 +242,7 @@ $button-sizes: (
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  line-height: initial;
 }
 
 // Suffix (오른쪽 아이콘)
@@ -241,6 +251,7 @@ $button-sizes: (
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  line-height: initial;
 }
 
 // Spinner

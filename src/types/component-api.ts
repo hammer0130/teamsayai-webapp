@@ -7,7 +7,7 @@ export type Intent =
   | "warning"
   | "danger";
 export type Variant = "fill" | "weak" | "solid" | "outline" | "ghost" | "link";
-export type Size = "small" | "medium" | "large" | "xlarge";
+export type Size = "xsmall" | "small" | "medium" | "large" | "xlarge";
 export type State = "disabled" | "loading";
 
 export type ButtonOptions = {

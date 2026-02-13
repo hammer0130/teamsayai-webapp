@@ -1,8 +1,9 @@
 import { createContext, useContext } from "react";
 
-import type { State } from "@/types/component-api";
+import type { Size, State } from "@/types/component-api";
 
 export type SelectContextValue = {
+  size: Size;
   state?: State;
   invalid: boolean;
 };

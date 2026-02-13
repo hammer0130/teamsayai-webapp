@@ -1,30 +1,44 @@
 :root {
-  /* Button Spacing Size */
-  --padding-button-sm-y: 8px;
-  --padding-button-sm-x: 12px;
+  /* Button Spacing Size (--space-* 계열) */
+  --padding-button-xs-y: var(--primitive-size-space-6);
+  --padding-button-xs-x: var(--space-xs);
 
-  --padding-button-md-y: 10px;
-  --padding-button-md-x: 14px;
+  --padding-button-sm-y: var(--space-xs);
+  --padding-button-sm-x: var(--space-sm);
 
-  --padding-button-lg-y: 14px;
-  --padding-button-lg-x: 16px;
+  --padding-button-md-y: var(--space-sm);
+  --padding-button-md-x: var(--space-md);
 
-  --padding-button-xl-y: 16px;
-  --padding-button-xl-x: 20px;
+  --padding-button-lg-y: var(--space-md);
+  --padding-button-lg-x: var(--space-md);
+
+  --padding-button-xl-y: var(--space-md);
+  --padding-button-xl-x: var(--space-lg);
 
   /* Button Font Size */
-  --font-button-sm-size: var(--t-f14-text-fontSize);
-  --font-button-sm-lineHeight: var(--t-f14-text-lineHeight);
+  --font-button-xs-size: var(--primitive-typography-font-size-12);
+  --font-button-xs-lineHeight: var(--primitive-typography-line-height-12);
 
-  --font-button-md-size: var(--t-f15-text-fontSize);
-  --font-button-md-lineHeight: var(--t-f15-text-lineHeight);
+  --font-button-sm-size: var(--primitive-typography-font-size-14);
+  --font-button-sm-lineHeight: var(--primitive-typography-line-height-14);
+
+  --font-button-md-size: var(--primitive-typography-font-size-16);
+  --font-button-md-lineHeight: var(--primitive-typography-line-height-16);
 
   --font-button-lg-size: var(--t-f17-text-fontSize);
   --font-button-lg-lineHeight: var(--t-f17-text-lineHeight);
 
   /* Button Border Radius */
+  --border-radius-button-xs: var(--radius-sm);
   --border-radius-button-sm: var(--radius-sm);
   --border-radius-button-md: var(--radius-md);
   --border-radius-button-lg: var(--radius-lg);
   --border-radius-button-xl: var(--radius-xl);
+
+  /* Button Min Height */
+  --min-height-button-xs: 24px;
+  --min-height-button-sm: 32px;
+  --min-height-button-md: 40px;
+  --min-height-button-lg: 48px;
+  --min-height-button-xl: 56px;
 }

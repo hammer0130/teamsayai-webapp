@@ -1,86 +1,201 @@
 :root {
-  /* Text */
-  --semantic-text-primary: var(--color-grey-900);
-  --semantic-text-secondary: var(--color-grey-700);
-  --semantic-text-tertiary: var(--color-grey-500);
-  --semantic-text-disabled: var(--color-grey-400);
-  --semantic-text-error: var(--color-red-500);
-  --semantic-text-inverse: #ffffff;
+  /* font size */
+  --primitive-typography-font-size-10: 10px;
+  --primitive-typography-font-size-12: 12px;
+  --primitive-typography-font-size-14: 14px;
+  --primitive-typography-font-size-16: 16px;
+  --primitive-typography-font-size-20: 20px;
+  --primitive-typography-font-size-24: 24px;
+  --primitive-typography-font-size-32: 32px;
+  --primitive-typography-font-size-40: 40px;
+  --primitive-typography-font-size-48: 48px;
+  --primitive-typography-font-size-64: 64px;
+  --primitive-typography-font-size-72: 72px;
 
-  /* Border / Divider */
-  --semantic-border-default: var(--color-grey-200);
-  --semantic-border-strong: var(--color-grey-300);
-  --semantic-border-focus: var(--color-blue-500);
-  --semantic-border-error: var(--color-red-500);
+  /* font weight */
+  --primitive-typography-weight-thin: 100;
+  --primitive-typography-weight-extralight: 200;
+  --primitive-typography-weight-light: 300;
+  --primitive-typography-weight-regular: 400;
+  --primitive-typography-weight-medium: 500;
+  --primitive-typography-weight-semibold: 600;
+  --primitive-typography-weight-bold: 700;
+  --primitive-typography-weight-extrabold: 800;
+  --primitive-typography-weight-black: 900;
 
-  /* Status Success */
-  --status-success: var(--color-green-500);
-  --status-success-weak: var(--color-green-50);
-  --status-success-strong: var(--color-green-600);
+  /* letter spacing */
+  --primitive-typography-letter-spacing-01: -0.1px;
+  --primitive-typography-letter-spacing-02: -0.2px;
+  --primitive-typography-letter-spacing-03: -0.3px;
+  --primitive-typography-letter-spacing-04: -0.4px;
+  --primitive-typography-letter-spacing-05: -0.5px;
+  --primitive-typography-letter-spacing-06: -0.6px;
+  --primitive-typography-letter-spacing-07: -0.7px;
+  --primitive-typography-letter-spacing-08: -0.8px;
+  --primitive-typography-letter-spacing-09: -0.9px;
+  --primitive-typography-letter-spacing-10: -1px;
+  --primitive-typography-letter-spacing-12: -1.2px;
 
-  /* Status Warning */
-  --status-warning: var(--color-yellow-500);
-  --status-warning-weak: var(--color-yellow-50);
-  --status-warning-strong: var(--color-yellow-600);
+  /* line height */
+  --primitive-typography-line-height-10: 15px;
+  --primitive-typography-line-height-12: 18px;
+  --primitive-typography-line-height-14: 21px;
+  --primitive-typography-line-height-16: 24px;
+  --primitive-typography-line-height-20: 30px;
+  --primitive-typography-line-height-24: 36px;
+  --primitive-typography-line-height-32: 48px;
+  --primitive-typography-line-height-40: 60px;
+  --primitive-typography-line-height-48: 72px;
+  --primitive-typography-line-height-64: 96px;
+  --primitive-typography-line-height-72: 108px;
 
-  /* Status Danger */
-  --status-danger: var(--color-red-500);
-  --status-danger-weak: var(--color-red-50);
-  --status-danger-strong: var(--color-red-600);
+  /* base (alias to _colors.scss primitive-value) */
+  --primitive-color-base-white: var(--primitive-color-value-base-white);
+  --primitive-color-base-black: var(--primitive-color-value-base-black);
 
-  /* Status Info */
-  --status-info: var(--color-blue-500);
-  --status-info-weak: var(--color-blue-50);
-  --status-info-strong: var(--color-blue-600);
+  --semantic-color-surface-default: var(--primitive-color-value-base-white);
 
-  /* Brand colors */
-  --primary-color: var(--color-blue-500);
-  --primary-color-weak: var(--color-blue-50);
-  --primary-color-strong: var(--color-blue-600);
+  /* background */
+  --semantic-color-background-black: var(--primitive-color-value-base-black);
+  --semantic-color-background-white: var(--primitive-color-value-base-white);
+  --semantic-color-background-brand-50: var(--primitive-color-value-brand-50);
+  --semantic-color-background-gray-50: var(--primitive-color-value-gray-50);
+  --semantic-color-background-gray-100: var(--primitive-color-value-gray-100);
+  --semantic-color-background-gray-800: var(--primitive-color-value-gray-800);
 
-  --secondary-color: var(--color-green-500);
-  --secondary-color-weak: var(--color-green-50);
-  --secondary-color-strong: var(--color-green-600);
+  /* text */
+  --semantic-color-text-gray-900: var(--primitive-color-value-gray-900);
+  --semantic-color-text-gray-800: var(--primitive-color-value-gray-800);
+  --semantic-color-text-gray-700: var(--primitive-color-value-gray-700);
+  --semantic-color-text-gray-600: var(--primitive-color-value-gray-600);
+  --semantic-color-text-gray-500: var(--primitive-color-value-gray-500);
+  --semantic-color-text-gray-400: var(--primitive-color-value-gray-400);
+  --semantic-color-text-gray-200: var(--primitive-color-value-gray-200);
 
-  --tertiary-color: var(--color-grey-300);
-  --tertiary-color-weak: var(--color-grey-50);
-  --tertiary-color-strong: var(--color-grey-400);
+  --semantic-color-text-brand-500: var(--primitive-color-value-brand-500);
+  --semantic-color-text-brand-400: var(--primitive-color-value-brand-400);
 
-  --success-color: var(--color-green-500);
-  --success-color-weak: var(--color-green-50);
-  --success-color-strong: var(--color-green-600);
+  --semantic-color-text-white: var(--primitive-color-value-base-white);
+  --semantic-color-text-black: var(--primitive-color-value-base-black);
 
-  --info-color: var(--color-blue-500);
-  --info-color-weak: var(--color-blue-50);
-  --info-color-strong: var(--color-blue-600);
+  --semantic-color-text-disabled: var(--primitive-color-value-gray-500);
+  --semantic-color-text-placeholder: var(--primitive-color-value-gray-300);
+  --semantic-color-text-input-label: var(--primitive-color-value-gray-400);
 
-  --warning-color: var(--color-yellow-500);
-  --warning-color-weak: var(--color-yellow-50);
-  --warning-color-strong: var(--color-yellow-600);
+  /* action */
+  --semantic-color-action-brand-50: var(--primitive-color-value-brand-50);
+  --semantic-color-action-button-primary: var(
+    --primitive-color-value-brand-400
+  );
+  --semantic-color-action-button-primary-strong: var(
+    --primitive-color-value-brand-500
+  );
 
-  --danger-color: var(--color-red-500);
-  --danger-color-weak: var(--color-red-50);
-  --danger-color-strong: var(--color-red-600);
+  /* border */
+  --semantic-color-border-gray-100: var(--primitive-color-value-gray-100);
+  --semantic-color-border-gray-200: var(--primitive-color-value-gray-200);
+  --semantic-color-border-gray-300: var(--primitive-color-value-gray-300);
+  --semantic-color-border-gray-400: var(--primitive-color-value-gray-400);
 
-  --disabled-color: var(--color-grey-400);
-  --disabled-color-weak: var(--color-grey-50);
-  --disabled-color-strong: var(--color-grey-600);
+  /* status */
+  --semantic-color-status-success: var(--primitive-color-value-green-400);
+  --semantic-color-status-success-weak: var(--primitive-color-value-green-500);
+  --semantic-color-status-success-strong: var(
+    --primitive-color-value-green-600
+  );
 
-  --error-color: var(--color-red-500);
-  --error-color-weak: var(--color-red-50);
-  --error-color-strong: var(--color-red-600);
+  --semantic-color-status-info: var(--primitive-color-value-blue-400);
+  --semantic-color-status-info-weak: var(--primitive-color-value-blue-500);
+  --semantic-color-status-info-strong: var(--primitive-color-value-blue-600);
 
-  --ghost-color: transparent; // 투명한 색상
+  --semantic-color-status-warning: var(--primitive-color-value-yellow-400);
+  --semantic-color-status-warning-weak: var(--primitive-color-value-yellow-500);
+  --semantic-color-status-warning-strong: var(
+    --primitive-color-value-yellow-600
+  );
 
-  --background-default: var(--color-white);
-  --background-weak: var(--color-grey-50);
-  --background-strong: var(--color-grey-100);
+  --semantic-color-status-danger: var(--primitive-color-value-red-400);
+  --semantic-color-status-danger-weak: var(--primitive-color-value-red-500);
+  --semantic-color-status-danger-strong: var(--primitive-color-value-red-600);
 
-  --background-default: var(--color-white);
-  --background-weak: var(--color-grey-50);
-  --background-strong: var(--color-grey-100);
+  /* ===== Compat: 기존 컴포넌트/스타일에서 사용하는 토큰명 → 새 semantic 매핑 ===== */
+  --semantic-text-primary: var(--semantic-color-text-gray-900);
+  --semantic-text-secondary: var(--semantic-color-text-gray-700);
+  --semantic-text-tertiary: var(--semantic-color-text-gray-500);
+  --semantic-text-disabled: var(--semantic-color-text-disabled);
+  --semantic-text-inverse: var(--semantic-color-text-white);
+  --semantic-text-error: var(--semantic-color-status-danger);
 
-  --background-default: var(--color-white);
-  --background-weak: var(--color-grey-50);
-  --background-strong: var(--color-grey-100);
+  --semantic-border-default: var(--semantic-color-border-gray-200);
+  --semantic-border-strong: var(--semantic-color-border-gray-300);
+  --semantic-border-focus: var(--semantic-color-action-button-primary);
+  --semantic-border-error: var(--semantic-color-status-danger);
+
+  --background-default: var(--semantic-color-background-white);
+  --background-weak: var(--semantic-color-background-gray-50);
+  --background-strong: var(--semantic-color-background-gray-100);
+
+  --primary-color: var(--semantic-color-action-button-primary);
+  --primary-color-weak: var(--semantic-color-action-brand-50);
+  --primary-color-strong: var(--semantic-color-action-button-primary-strong);
+  --primary-color-rgb: 89, 63, 234; /* brand-400 #593fea */
+
+  --gray-100: var(--semantic-color-border-gray-100);
+  --gray-300: var(--semantic-color-border-gray-300);
+
+  --success-color: var(--semantic-color-status-success);
+  --success-color-weak: var(--semantic-color-status-success-weak);
+  --success-color-strong: var(--semantic-color-status-success-strong);
+
+  --info-color: var(--semantic-color-status-info);
+  --info-color-weak: var(--semantic-color-status-info-weak);
+  --info-color-strong: var(--semantic-color-status-info-strong);
+
+  --warning-color: var(--semantic-color-status-warning);
+  --warning-color-weak: var(--semantic-color-status-warning-weak);
+  --warning-color-strong: var(--semantic-color-status-warning-strong);
+
+  --danger-color: var(--semantic-color-status-danger);
+  --danger-color-weak: var(--semantic-color-status-danger-weak);
+  --danger-color-strong: var(--semantic-color-status-danger-strong);
+  --danger-color-rgb: 236, 34, 31; /* red-400 #ec221f */
+
+  --error-color: var(--semantic-color-status-danger);
+  --error-color-weak: var(--semantic-color-status-danger-weak);
+  --error-color-strong: var(--semantic-color-status-danger-strong);
+
+  --secondary-color: var(--semantic-color-status-success);
+  --secondary-color-weak: var(--semantic-color-status-success-weak);
+  --secondary-color-strong: var(--semantic-color-status-success-strong);
+
+  --tertiary-color: var(--semantic-color-border-gray-300);
+  --tertiary-color-weak: var(--semantic-color-background-gray-50);
+  --tertiary-color-strong: var(--semantic-color-border-gray-400);
+
+  --disabled-color: var(--semantic-color-border-gray-400);
+  --disabled-color-weak: var(--semantic-color-background-gray-50);
+  --disabled-color-strong: var(--primitive-color-value-gray-600);
+
+  /* space */
+  --primitive-size-space-0: 0px;
+  --primitive-size-space-2: 2px;
+  --primitive-size-space-4: 4px;
+  --primitive-size-space-6: 6px;
+  --primitive-size-space-8: 8px;
+  --primitive-size-space-12: 12px;
+  --primitive-size-space-16: 16px;
+  --primitive-size-space-20: 20px;
+  --primitive-size-space-24: 24px;
+  --primitive-size-space-32: 32px;
+  --primitive-size-space-48: 48px;
+  --primitive-size-space-64: 64px;
+  --primitive-size-space-96: 96px;
+  --primitive-size-space-160: 160px;
+
+  /* Alias: 컴포넌트 size 대응 (sm/md/lg/xl) */
+  --space-xs: var(--primitive-size-space-8);
+  --space-sm: var(--primitive-size-space-12);
+  --space-md: var(--primitive-size-space-16);
+  --space-lg: var(--primitive-size-space-20);
+  --space-xl: var(--primitive-size-space-24);
 }

@@ -13,9 +13,9 @@
   // ============ Content ============
   --ui-dialog-content-background: var(--background-default);
   --ui-dialog-content-border: var(--semantic-border-default);
-  --ui-dialog-content-border-radius: 8px;
+  --ui-dialog-content-border-radius: var(--primitive-size-radius-8);
   --ui-dialog-content-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-  --ui-dialog-content-padding: 24px;
+  --ui-dialog-content-padding: var(--space-xl);
   --ui-dialog-content-max-width: 420px;
   --ui-dialog-content-z-index: 2;
 
@@ -23,20 +23,20 @@
   --ui-dialog-title-font-size: 18px;
   --ui-dialog-title-font-weight: 600;
   --ui-dialog-title-color: var(--semantic-text-primary);
-  --ui-dialog-title-margin-bottom: 8px;
+  --ui-dialog-title-margin-bottom: var(--space-xs);
 
   // ============ Description ============
   --ui-dialog-description-font-size: 14px;
   --ui-dialog-description-color: var(--semantic-text-secondary);
   --ui-dialog-description-line-height: 1.5;
-  --ui-dialog-description-margin-bottom: 16px;
+  --ui-dialog-description-margin-bottom: var(--space-md);
 
   // ============ Close ============
   --ui-dialog-close-background: transparent;
   --ui-dialog-close-background-hover: var(--gray-100);
   --ui-dialog-close-text: var(--semantic-text-primary);
-  --ui-dialog-close-padding: 8px 16px;
-  --ui-dialog-close-border-radius: 6px;
+  --ui-dialog-close-padding: var(--space-xs) var(--space-md);
+  --ui-dialog-close-border-radius: var(--primitive-size-radius-6);
   --ui-dialog-close-font-size: 14px;
   --ui-dialog-close-font-weight: 500;
 
@@ -46,5 +46,5 @@
   --ui-dialog-close-button-color: var(--semantic-text-secondary);
   --ui-dialog-close-button-color-hover: var(--semantic-text-primary);
   --ui-dialog-close-button-background-hover: var(--gray-100);
-  --ui-dialog-close-button-border-radius: 6px;
+  --ui-dialog-close-button-border-radius: var(--primitive-size-radius-6);
 }

@@ -3,6 +3,11 @@
 import { useState } from "react";
 
 import { Button } from "@/components/button";
+import { Checkbox } from "@/components/checkbox";
+import { CheckIcon } from "@/components/icon";
+import { Input } from "@/components/input";
+import { InputField } from "@/components/InputField";
+import { Select } from "@/components/select";
 
 import { UserPageRoot, UserPageTitle, UserForm } from "./UsersPage.styles";
 
@@ -59,7 +64,8 @@ export default function AdminUsersPage() {
       if (!form.name.trim()) throw new Error("이름은 필수입니다.");
       if (!form.member_id.trim()) throw new Error("회원 아이디는 필수입니다.");
       if (!form.team_role.trim()) throw new Error("팀 역할은 필수입니다.");
-      if (!form.position.trim()) throw new Error("포지션은 필수입니다.");
+      if (typeof form.position !== "string" || !form.position.trim())
+        throw new Error("포지션은 필수입니다.");
       if (!form.since) throw new Error("입단연도는 필수입니다.");
 
       const payload = {
@@ -69,33 +75,33 @@ export default function AdminUsersPage() {
 
       console.log(payload);
 
-      const res = await fetch("/api/admin/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      // const res = await fetch("/api/admin/users", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(payload),
+      // });
 
-      const data = await res.json();
+      // const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data?.message ?? "등록 실패");
-      }
+      // if (!res.ok) {
+      //   throw new Error(data?.message ?? "등록 실패");
+      // }
 
-      setMsg(`등록 완료! userId=${data.id}`);
-      // 입력값 초기화
-      setForm((prev) => ({
-        ...prev,
-        name: "",
-        member_id: "",
-        back_no: null,
-        player_id: null,
-        position: "",
-        active: true,
-        role: "member",
-        password: "",
-        since: null,
-        note: "",
-      }));
+      // setMsg(`등록 완료! userId=${data.id}`);
+      // // 입력값 초기화
+      // setForm((prev) => ({
+      //   ...prev,
+      //   name: "",
+      //   member_id: "",
+      //   back_no: null,
+      //   player_id: null,
+      //   position: "",
+      //   active: true,
+      //   role: "member",
+      //   password: "",
+      //   since: null,
+      //   note: "",
+      // }));
     } catch (e: any) {
       setMsg(e?.message ?? "에러가 발생했습니다.");
     } finally {
@@ -108,130 +114,183 @@ export default function AdminUsersPage() {
       <PageTitle title="회원 등록" />
 
       <UserForm>
-        <label>
-          게임원 아이디 (member_id)
-          <input
-            value={form.member_id}
-            onChange={(e) => {
-              const value = e.target.value;
-              setMemberId(value);
-              setForm((prev) => ({
-                ...prev,
-                member_id: value,
-                email: `${value}@teamsayai.com`,
-              }));
-            }}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>게임원 아이디 (member_id)</InputField.Label>
+            <Input
+              defaultValue={form.member_id}
+              onValueChange={(value) => {
+                setMemberId(value);
+                setForm((prev) => ({
+                  ...prev,
+                  member_id: value,
+                  email: `${value}@teamsayai.com`,
+                }));
+              }}
+              size="large"
+            />
+          </InputField.Container>
+        </InputField>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>이름 (name)</InputField.Label>
+            <Input
+              defaultValue={form.name}
+              onValueChange={(value) => onChange("name", value)}
+              size="large"
+            />
+          </InputField.Container>
+        </InputField>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>권한 (role)</InputField.Label>
+            <Select.Root
+              key={form.role}
+              defaultValue={form.role}
+              onValueChange={(value) => onChange("role", value)}
+            >
+              <Select.Trigger
+                style={{
+                  width: "100%",
+                }}
+              >
+                <Select.Value placeholder="옵션을 선택하세요" />
+                <Select.Icon />
+              </Select.Trigger>
+              <Select.Portal>
+                <Select.Content>
+                  <Select.Viewport>
+                    <Select.Item value="member">
+                      <Select.ItemText>member</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item value="admin">
+                      <Select.ItemText>admin</Select.ItemText>
+                    </Select.Item>
+                  </Select.Viewport>
+                </Select.Content>
+              </Select.Portal>
+            </Select.Root>
+          </InputField.Container>
+        </InputField>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>팀 역할 (team_role)</InputField.Label>
+            <Select.Root
+              key={form.team_role}
+              defaultValue={form.team_role}
+              onValueChange={(value) => onChange("team_role", value)}
+            >
+              <Select.Trigger
+                style={{
+                  width: "100%",
+                }}
+              >
+                <Select.Value placeholder="옵션을 선택하세요" />
+                <Select.Icon />
+              </Select.Trigger>
+              <Select.Portal>
+                <Select.Content>
+                  <Select.Viewport>
+                    <Select.Item value="선수">
+                      <Select.ItemText>선수</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item value="감독">
+                      <Select.ItemText>감독</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item value="코치">
+                      <Select.ItemText>코치</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item value="총무">
+                      <Select.ItemText>총무</Select.ItemText>
+                    </Select.Item>
+                  </Select.Viewport>
+                </Select.Content>
+              </Select.Portal>
+            </Select.Root>
+          </InputField.Container>
+        </InputField>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>등번호 (back_no)</InputField.Label>
+            <Input
+              defaultValue={form.back_no ?? ""}
+              onValueChange={(value) => {
+                const newBackNo = value ? Number(value) : null;
+                setBackNo(newBackNo);
+                setForm((prev) => ({
+                  ...prev,
+                  back_no: newBackNo,
+                  password: newBackNo !== null ? `teamsayai${newBackNo}` : "",
+                }));
+              }}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              size="large"
+            />
+          </InputField.Container>
+        </InputField>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>선수 아이디 (player_id)</InputField.Label>
+            <Input
+              defaultValue={form.player_id ?? ""}
+              onValueChange={(value) =>
+                onChange("player_id", value ? Number(value) : null)
+              }
+            />
+          </InputField.Container>
+        </InputField>
 
-        <label>
-          이름 (name)
-          <input
-            value={form.name}
-            onChange={(e) => onChange("name", e.target.value)}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>포지션 (position)</InputField.Label>
+            <Input
+              defaultValue={form.position}
+              placeholder="예: 투수, 포수"
+              onValueChange={(value) => onChange("position", value)}
+            />
+          </InputField.Container>
+        </InputField>
 
-        <label>
-          권한 (role)
-          <select
-            value={form.role}
-            onChange={(e) => onChange("role", e.target.value)}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          >
-            <option value="member">member</option>
-            <option value="admin">admin</option>
-          </select>
-        </label>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>입단연도 (since)</InputField.Label>
+            <Input
+              defaultValue={form.since ?? ""}
+              placeholder="2012"
+              onValueChange={(value) =>
+                onChange("since", value ? Number(value) : null)
+              }
+            />
+          </InputField.Container>
+        </InputField>
 
-        <label>
-          팀 역할 (team_role)
-          <select
-            value={form.team_role}
-            onChange={(e) => onChange("team_role", e.target.value)}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          >
-            <option value="선수">선수</option>
-            <option value="감독">감독</option>
-            <option value="코치">코치</option>
-            <option value="총무">총무</option>
-          </select>
-        </label>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>활동 여부 (active)</InputField.Label>
+            <Checkbox.Root
+              key={form.active ? "true" : "false"}
+              checked={form.active}
+              onCheckedChange={(checked) => onChange("active", checked)}
+            >
+              <Checkbox.Indicator>
+                <CheckIcon />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+          </InputField.Container>
+        </InputField>
 
-        <label>
-          등번호 (back_no)
-          <input
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            value={form.back_no ?? ""}
-            onChange={(e) => {
-              const value = e.target.value;
-              const newBackNo = value ? Number(value) : null;
-              setBackNo(newBackNo);
-              setForm((prev) => ({
-                ...prev,
-                back_no: newBackNo,
-                password: newBackNo !== null ? `teamsayai${newBackNo}` : "",
-              }));
-            }}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
+        <InputField>
+          <InputField.Container>
+            <InputField.Label>비고 (note)</InputField.Label>
+            <Input
+              defaultValue={form.note}
+              placeholder="비고를 입력해주세요."
+              onValueChange={(value) => onChange("note", value)}
+            />
+          </InputField.Container>
+        </InputField>
 
-        <label>
-          선수 아이디 (player_id)
-          <input
-            value={form.player_id ?? ""}
-            onChange={(e) =>
-              onChange(
-                "player_id",
-                e.target.value ? Number(e.target.value) : null,
-              )
-            }
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
-
-        <label>
-          포지션 (position)
-          <input
-            value={form.position}
-            onChange={(e) => onChange("position", e.target.value)}
-            placeholder="예: 투수, 포수"
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
-
-        <label>
-          입단연도 (since)
-          <input
-            value={form.since ?? ""}
-            onChange={(e) => onChange("since", e.target.value)}
-            placeholder="2012"
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
-
-        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input
-            type="checkbox"
-            checked={form.active}
-            onChange={(e) => onChange("active", e.target.checked)}
-          />
-          활동 여부 (active)
-        </label>
-
-        <label>
-          비고 (note)
-          <input
-            value={form.note}
-            onChange={(e) => onChange("note", e.target.value)}
-            style={{ width: "100%", padding: 10, marginTop: 6 }}
-          />
-        </label>
         <Button onClick={submit} disabled={loading} size="large">
           {loading ? "등록 중..." : "회원 등록"}
         </Button>

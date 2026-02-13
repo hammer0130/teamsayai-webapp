@@ -1,22 +1,22 @@
 :root {
   // ============ Viewport ============
   --ui-toast-viewport-z-index: 1100;
-  --ui-toast-viewport-gap: 8px;
-  --ui-toast-viewport-padding: 16px;
+  --ui-toast-viewport-gap: var(--space-xs);
+  --ui-toast-viewport-padding: var(--space-md);
   --ui-toast-viewport-max-width: 420px;
 
   // ============ Root (개별 토스트) ============
   --ui-toast-root-background: var(--background-default);
   --ui-toast-root-border: var(--semantic-border-default);
-  --ui-toast-root-border-radius: 8px;
+  --ui-toast-root-border-radius: var(--primitive-size-radius-8);
   --ui-toast-root-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  --ui-toast-root-padding: 12px 16px;
+  --ui-toast-root-padding: var(--space-sm) var(--space-md);
 
   // ============ Title ============
   --ui-toast-title-font-size: 14px;
   --ui-toast-title-font-weight: 600;
   --ui-toast-title-color: var(--semantic-text-primary);
-  --ui-toast-title-margin-bottom: 4px;
+  --ui-toast-title-margin-bottom: var(--primitive-size-space-4);
 
   // ============ Description ============
   --ui-toast-description-font-size: 13px;
@@ -24,7 +24,7 @@
   --ui-toast-description-line-height: 1.4;
 
   // ============ Action ============
-  --ui-toast-action-margin-top: 8px;
+  --ui-toast-action-margin-top: var(--space-xs);
   --ui-toast-action-background: transparent;
   --ui-toast-action-background-hover: var(--gray-100);
   --ui-toast-action-text: var(--primary-color);

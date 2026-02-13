@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import * as React from "react";
 
 import {
@@ -10,6 +9,7 @@ import * as RadixSelect from "@radix-ui/react-select";
 import clsx from "clsx";
 
 import { SelectContext, type SelectContextValue } from "./Select.context";
+
 import type {
   SelectRootProps,
   SelectTriggerProps,
@@ -31,6 +31,7 @@ import type {
 // ============ Default Props ============
 
 const DEFAULT_PROPS = {
+  size: "medium",
   invalid: false,
 } as const;
 
@@ -38,6 +39,7 @@ const DEFAULT_PROPS = {
 
 /** Select.Root - Select 컨테이너 */
 function Root({
+  size = DEFAULT_PROPS.size,
   state,
   invalid: invalidProp = DEFAULT_PROPS.invalid,
   children,
@@ -46,8 +48,12 @@ function Root({
   const isDisabled = state === "disabled";
 
   const contextValue = React.useMemo<SelectContextValue>(
-    () => ({ state, invalid: invalidProp }),
-    [state, invalidProp],
+    () => ({
+      size,
+      invalid: invalidProp,
+      ...(state !== undefined && { state }),
+    }),
+    [size, state, invalidProp],
   );
 
   return (
@@ -64,13 +70,18 @@ Root.displayName = "Select.Root";
 const Trigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ className, children, ...props }, ref) => {
     const ctx = React.useContext(SelectContext);
+    const size = ctx?.size ?? "medium";
     const isDisabled = ctx?.state === "disabled";
     const invalid = ctx?.invalid ?? false;
 
     return (
       <RadixSelect.Trigger
         ref={ref}
-        className={clsx("ui-select__trigger", className)}
+        className={clsx(
+          "ui-select__trigger",
+          `ui-select__trigger--${size}`,
+          className,
+        )}
         data-disabled={isDisabled || undefined}
         data-invalid={invalid || undefined}
         {...props}
@@ -119,17 +130,26 @@ const Content = React.forwardRef<HTMLDivElement, SelectContentProps>(
   (
     { className, children, position = "popper", sideOffset = 4, ...props },
     ref,
-  ) => (
-    <RadixSelect.Content
-      ref={ref}
-      className={clsx("ui-select__content", className)}
-      position={position}
-      sideOffset={sideOffset}
-      {...props}
-    >
-      {children}
-    </RadixSelect.Content>
-  ),
+  ) => {
+    const ctx = React.useContext(SelectContext);
+    const size = ctx?.size ?? "medium";
+
+    return (
+      <RadixSelect.Content
+        ref={ref}
+        className={clsx(
+          "ui-select__content",
+          `ui-select__content--${size}`,
+          className,
+        )}
+        position={position}
+        sideOffset={sideOffset}
+        {...props}
+      >
+        {children}
+      </RadixSelect.Content>
+    );
+  },
 );
 Content.displayName = "Select.Content";
 
@@ -147,15 +167,24 @@ Viewport.displayName = "Select.Viewport";
 
 /** Select.Item - 개별 아이템 */
 const Item = React.forwardRef<HTMLDivElement, SelectItemProps>(
-  ({ className, children, ...props }, ref) => (
-    <RadixSelect.Item
-      ref={ref}
-      className={clsx("ui-select__item", className)}
-      {...props}
-    >
-      {children}
-    </RadixSelect.Item>
-  ),
+  ({ className, children, ...props }, ref) => {
+    const ctx = React.useContext(SelectContext);
+    const size = ctx?.size ?? "medium";
+
+    return (
+      <RadixSelect.Item
+        ref={ref}
+        className={clsx(
+          "ui-select__item",
+          `ui-select__item--${size}`,
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </RadixSelect.Item>
+    );
+  },
 );
 Item.displayName = "Select.Item";
 

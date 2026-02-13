@@ -6,15 +6,35 @@
   --ui-select-trigger-border-invalid: var(--semantic-border-error);
   --ui-select-trigger-text: var(--semantic-text-primary);
   --ui-select-trigger-placeholder: var(--semantic-text-tertiary);
-  --ui-select-trigger-padding: 10px 14px;
-  --ui-select-trigger-min-height: 40px;
-  --ui-select-trigger-border-radius: 8px;
-  --ui-select-trigger-font-size: 14px;
 
   // ============ Trigger Disabled ============
   --ui-select-trigger-disabled-background: var(--disabled-color-weak);
   --ui-select-trigger-disabled-border: var(--disabled-color);
   --ui-select-trigger-disabled-text: var(--semantic-text-disabled);
+
+  // ============ Trigger Size: small ============
+  --ui-select-trigger-sm-padding: var(--space-xs) var(--space-sm);
+  --ui-select-trigger-sm-min-height: 32px;
+  --ui-select-trigger-sm-border-radius: var(--radius-sm);
+  --ui-select-trigger-sm-font-size: var(--t-f14-text-fontSize);
+
+  // ============ Trigger Size: medium (default) ============
+  --ui-select-trigger-md-padding: var(--space-sm) var(--space-md);
+  --ui-select-trigger-md-min-height: 40px;
+  --ui-select-trigger-md-border-radius: var(--primitive-size-radius-8);
+  --ui-select-trigger-md-font-size: var(--t-f14-text-fontSize);
+
+  // ============ Trigger Size: large ============
+  --ui-select-trigger-lg-padding: var(--space-sm) var(--space-md);
+  --ui-select-trigger-lg-min-height: 48px;
+  --ui-select-trigger-lg-border-radius: var(--radius-lg);
+  --ui-select-trigger-lg-font-size: var(--t-f15-text-fontSize);
+
+  // ============ Trigger Size: xlarge ============
+  --ui-select-trigger-xl-padding: var(--space-md) var(--space-lg);
+  --ui-select-trigger-xl-min-height: 56px;
+  --ui-select-trigger-xl-border-radius: var(--radius-xl);
+  --ui-select-trigger-xl-font-size: var(--t-f17-text-fontSize);
 
   // ============ Icon ============
   --ui-select-icon-color: var(--semantic-text-secondary);
@@ -23,13 +43,19 @@
   // ============ Content ============
   --ui-select-content-background: var(--background-default);
   --ui-select-content-border: var(--semantic-border-default);
-  --ui-select-content-border-radius: 8px;
+  --ui-select-content-border-radius: var(--primitive-size-radius-8);
   --ui-select-content-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --ui-select-content-padding: 4px;
+  --ui-select-content-padding: var(--primitive-size-space-4);
   --ui-select-content-max-height: 300px;
 
+  // ============ Content Size ============
+  --ui-select-content-sm-border-radius: var(--radius-sm);
+  --ui-select-content-md-border-radius: var(--primitive-size-radius-8);
+  --ui-select-content-lg-border-radius: var(--radius-lg);
+  --ui-select-content-xl-border-radius: var(--radius-xl);
+
   // ============ Viewport ============
-  --ui-select-viewport-padding: 4px;
+  --ui-select-viewport-padding: var(--primitive-size-space-4);
 
   // ============ Item ============
   --ui-select-item-background: transparent;
@@ -37,9 +63,20 @@
   --ui-select-item-background-active: var(--primary-color-weak);
   --ui-select-item-text: var(--semantic-text-primary);
   --ui-select-item-text-disabled: var(--semantic-text-disabled);
-  --ui-select-item-padding: 8px 12px;
-  --ui-select-item-border-radius: 4px;
-  --ui-select-item-font-size: 14px;
+  --ui-select-item-border-radius: var(--primitive-size-radius-4);
+
+  // ============ Item Size ============
+  --ui-select-item-sm-padding: var(--primitive-size-space-4) var(--space-xs);
+  --ui-select-item-sm-font-size: var(--t-f14-text-fontSize);
+
+  --ui-select-item-md-padding: var(--space-xs) var(--space-sm);
+  --ui-select-item-md-font-size: var(--t-f14-text-fontSize);
+
+  --ui-select-item-lg-padding: var(--space-sm) var(--space-sm);
+  --ui-select-item-lg-font-size: var(--t-f15-text-fontSize);
+
+  --ui-select-item-xl-padding: var(--space-sm) var(--space-md);
+  --ui-select-item-xl-font-size: var(--t-f17-text-fontSize);
 
   // ============ Item Indicator ============
   --ui-select-item-indicator-color: var(--primary-color);
@@ -48,11 +85,11 @@
   // ============ Label ============
   --ui-select-label-color: var(--semantic-text-secondary);
   --ui-select-label-font-size: 12px;
-  --ui-select-label-padding: 8px 12px 4px;
+  --ui-select-label-padding: var(--space-xs) var(--space-sm) var(--primitive-size-space-4);
 
   // ============ Separator ============
   --ui-select-separator-color: var(--semantic-border-default);
-  --ui-select-separator-margin: 4px 0;
+  --ui-select-separator-margin: var(--primitive-size-space-4) 0;
 
   // ============ Scroll Button ============
   --ui-select-scroll-button-background: var(--background-default);

@@ -1,6 +1,6 @@
 :root {
   // Background
-  --input-background: transparent;
+  --input-background: var(--semantic-color-surface-default);
 
   // Border
   --input-border: var(--semantic-border-default);
@@ -16,11 +16,11 @@
   --input-disabled-border: var(--disabled-color);
   --input-disabled-text: var(--semantic-text-disabled);
 
-  // Size
-  --input-padding-sm: 8px 12px;
-  --input-padding-md: 10px 14px;
-  --input-padding-lg: 12px 16px;
-  --input-padding-xl: 14px 18px;
+  // Size (--space-* 계열)
+  --input-padding-sm: var(--space-xs) var(--space-sm);
+  --input-padding-md: var(--space-sm) var(--space-md);
+  --input-padding-lg: var(--space-sm) var(--space-md);
+  --input-padding-xl: var(--space-md) var(--space-lg);
 
   --input-font-size-sm: 13px;
   --input-font-size-md: 14px;
@@ -32,8 +32,8 @@
   --input-min-height-lg: 48px;
   --input-min-height-xl: 56px;
 
-  --input-border-radius-sm: 6px;
-  --input-border-radius-md: 8px;
-  --input-border-radius-lg: 10px;
-  --input-border-radius-xl: 12px;
+  --input-border-radius-sm: var(--primitive-size-radius-6);
+  --input-border-radius-md: var(--primitive-size-radius-8);
+  --input-border-radius-lg: var(--primitive-size-radius-12);
+  --input-border-radius-xl: var(--primitive-size-radius-12);
 }

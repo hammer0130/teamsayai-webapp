@@ -1,3 +1,14 @@
+@use "sass:map";
+
+// ============ Size Alias ============
+
+$select-size-alias: (
+  small: sm,
+  medium: md,
+  large: lg,
+  xlarge: xl,
+);
+
 // ============ Select Trigger ============
 .ui-select__trigger {
   display: inline-flex;
@@ -5,13 +16,15 @@
   justify-content: space-between;
   gap: 8px;
   width: 100%;
-  min-height: var(--ui-select-trigger-min-height);
-  padding: var(--ui-select-trigger-padding);
   border: 1px solid var(--ui-select-trigger-border);
-  border-radius: var(--ui-select-trigger-border-radius);
   background-color: var(--ui-select-trigger-background);
   color: var(--ui-select-trigger-text);
-  font-size: var(--ui-select-trigger-font-size);
+
+  // 기본값 (medium)
+  min-height: var(--ui-select-trigger-md-min-height);
+  padding: var(--ui-select-trigger-md-padding);
+  border-radius: var(--ui-select-trigger-md-border-radius);
+  font-size: var(--ui-select-trigger-md-font-size);
 
   cursor: pointer;
   outline: none;
@@ -54,6 +67,16 @@
   }
 }
 
+// ============ Trigger Size Modifiers ============
+@each $name, $alias in $select-size-alias {
+  .ui-select__trigger--#{$name} {
+    min-height: var(--ui-select-trigger-#{$alias}-min-height);
+    padding: var(--ui-select-trigger-#{$alias}-padding);
+    border-radius: var(--ui-select-trigger-#{$alias}-border-radius);
+    font-size: var(--ui-select-trigger-#{$alias}-font-size);
+  }
+}
+
 // ============ Select Value ============
 .ui-select__value {
   flex: 1;
@@ -87,7 +110,7 @@
   min-width: var(--radix-select-trigger-width);
   background-color: var(--ui-select-content-background);
   border: 1px solid var(--ui-select-content-border);
-  border-radius: var(--ui-select-content-border-radius);
+  border-radius: var(--ui-select-content-md-border-radius);
   box-shadow: var(--ui-select-content-shadow);
 
   // Animation
@@ -109,6 +132,13 @@
 
   &[data-side="top"] {
     transform-origin: bottom;
+  }
+}
+
+// ============ Content Size Modifiers ============
+@each $name, $alias in $select-size-alias {
+  .ui-select__content--#{$name} {
+    border-radius: var(--ui-select-content-#{$alias}-border-radius);
   }
 }
 
@@ -145,11 +175,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: var(--ui-select-item-padding);
   border-radius: var(--ui-select-item-border-radius);
   background-color: var(--ui-select-item-background);
   color: var(--ui-select-item-text);
-  font-size: var(--ui-select-item-font-size);
+
+  // 기본값 (medium)
+  padding: var(--ui-select-item-md-padding);
+  font-size: var(--ui-select-item-md-font-size);
 
   cursor: pointer;
   outline: none;
@@ -168,6 +200,14 @@
     cursor: not-allowed;
     color: var(--ui-select-item-text-disabled);
     pointer-events: none;
+  }
+}
+
+// ============ Item Size Modifiers ============
+@each $name, $alias in $select-size-alias {
+  .ui-select__item--#{$name} {
+    padding: var(--ui-select-item-#{$alias}-padding);
+    font-size: var(--ui-select-item-#{$alias}-font-size);
   }
 }
 

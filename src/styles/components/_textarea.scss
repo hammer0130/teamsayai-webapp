@@ -202,3 +202,30 @@
     color: var(--textarea-disabled-text);
   }
 }
+
+// ============ Element: .ui-textarea__wrapper ============
+
+.ui-textarea__wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  width: auto;
+
+  &.ui-textarea__wrapper--block {
+    width: 100%;
+  }
+}
+
+// ============ Element: .ui-textarea__count ============
+
+.ui-textarea__count {
+  display: block;
+  text-align: right;
+  font-size: var(--primitive-typography-font-size-12);
+  line-height: var(--primitive-typography-line-height-12);
+  color: var(--semantic-text-tertiary);
+
+  &.ui-textarea__count--over {
+    color: var(--danger-color);
+  }
+}

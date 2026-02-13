@@ -15,11 +15,11 @@
   --ui-tabs-trigger-border-active: var(--primary-color);
   --ui-tabs-trigger-font-weight: 500;
 
-  // ============ Trigger Sizes ============
-  --ui-tabs-trigger-padding-sm: 6px 12px;
-  --ui-tabs-trigger-padding-md: 8px 16px;
-  --ui-tabs-trigger-padding-lg: 10px 20px;
-  --ui-tabs-trigger-padding-xl: 12px 24px;
+  // ============ Trigger Sizes (--space-* 계열) ============
+  --ui-tabs-trigger-padding-sm: var(--primitive-size-space-6) var(--space-sm);
+  --ui-tabs-trigger-padding-md: var(--space-xs) var(--space-md);
+  --ui-tabs-trigger-padding-lg: var(--space-sm) var(--space-lg);
+  --ui-tabs-trigger-padding-xl: var(--space-sm) var(--space-xl);
 
   --ui-tabs-trigger-font-size-sm: 13px;
   --ui-tabs-trigger-font-size-md: 14px;
@@ -32,18 +32,18 @@
   --ui-tabs-trigger-height-xl: 56px;
 
   // ============ Content ============
-  --ui-tabs-content-padding: 16px 0;
+  --ui-tabs-content-padding: var(--space-md) 0;
   --ui-tabs-content-text: var(--semantic-text-primary);
 
   // ============ Variant: Enclosed ============
   --ui-tabs-enclosed-list-background: var(--gray-100);
-  --ui-tabs-enclosed-list-padding: 4px;
-  --ui-tabs-enclosed-list-border-radius: 8px;
-  --ui-tabs-enclosed-trigger-border-radius: 6px;
+  --ui-tabs-enclosed-list-padding: var(--primitive-size-space-4);
+  --ui-tabs-enclosed-list-border-radius: var(--primitive-size-radius-8);
+  --ui-tabs-enclosed-trigger-border-radius: var(--primitive-size-radius-6);
   --ui-tabs-enclosed-trigger-background-active: var(--background-default);
 
   // ============ Variant: Soft ============
   --ui-tabs-soft-trigger-background-active: var(--primary-color-weak);
   --ui-tabs-soft-trigger-text-active: var(--primary-color);
-  --ui-tabs-soft-trigger-border-radius: 6px;
+  --ui-tabs-soft-trigger-border-radius: var(--primitive-size-radius-6);
 }

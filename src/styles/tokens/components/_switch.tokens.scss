@@ -10,7 +10,7 @@
   --ui-switch-thumb-background: var(--background-default);
 
   // Border
-  --ui-switch-border-radius: 999px;
+  --ui-switch-border-radius: var(--primitive-size-radius-full);
   --ui-switch-thumb-border-radius: 50%;
 
   // Focus
